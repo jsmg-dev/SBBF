@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>User Management</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to right, #004aad, #007bff);
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: #003e99;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 60px;
+      color: white;
+    }
+
+    .logout-button {
+      background-color: #f44336;
+      color: white;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .container {
+      flex: 1;
+      padding: 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .create-button {
+      background: linear-gradient(to right, #004aad, #007bff);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+      color: #333;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    th, td {
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #e6e6e6;
+      color: #333;
+      font-weight: bold;
+    }
+
+    tr:hover {
+      background-color: #f0f0f0;
+    }
+
+    .action-icon {
+      color: #004aad;
+      margin-right: 12px;
+      cursor: pointer;
+    }
+
+    .action-icon:hover {
+      color: #f44336;
+    }
+
+    input.column-filter {
+      width: 100%;
+      padding: 6px;
+      margin-top: 6px;
+      font-size: 14px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      position: relative;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #888;
+      cursor: pointer;
+    }
+
+    .close-modal:hover {
+      color: #f44336;
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 20px; }
+      .create-button { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div><strong>User Management</strong></div>
+  <a href="/auth/logout" class="logout-button">Logout</a>
+</header>
+
+<div class="container">
+  <div class="card">
+    <button class="create-button" onclick="openCreateUserModal()">+ Create New User</button>
+
+    <table id="userTable">
+      <thead>
+        <tr>
+          <th>Actions</th>
+          <th>ID <br><input class="column-filter" type="text" onkeyup="filterTable(1)" placeholder="Search ID" /></th>
+          <th>Name <br><input class="column-filter" type="text" onkeyup="filterTable(2)" placeholder="Search Name" /></th>
+          <th>Username <br><input class="column-filter" type="text" onkeyup="filterTable(3)" placeholder="Search Username" /></th>
+          <th>Role <br><input class="column-filter" type="text" onkeyup="filterTable(4)" placeholder="Search Role" /></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Modal for Create User -->
+<div class="modal" id="createUserModal">
+  <div class="modal-content" id="createUserContent">
+    <span class="close-modal" onclick="closeCreateUserModal()">×</span>
+    <!-- Content will be loaded here -->
+    Loading...
+  </div>
+</div>
+
+<script>
+  let users = [];
+
+  fetch('/users/list')
+    .then(res => res.json())
+    .then(data => {
+      users = data;
+      renderRows(users);
+    })
+    .catch(err => {
+      console.error('Error loading user list:', err);
+      document.querySelector('#userTable tbody').innerHTML =
+        '<tr><td colspan="5">Failed to load users</td></tr>';
+    });
+
+  function renderRows(data) {
+    const tbody = document.querySelector('#userTable tbody');
+    tbody.innerHTML = '';
+    data.forEach(user => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>
+          <i class="fas fa-eye action-icon" title="View" onclick="viewUser(${user.id})"></i>
+          <i class="fas fa-trash action-icon" title="Delete" onclick="deleteUser(${user.id})"></i>
+        </td>
+        <td>${user.id}</td>
+        <td>${user.name || 'N/A'}</td>
+        <td>${user.username}</td>
+        <td>${user.role || 'user'}</td>
+      `;
+      tbody.appendChild(row);
+    });
+  }
+
+  function viewUser(id) {
+    window.location.href = `/pages/view-user.html?id=${id}`;
+  }
+
+  function deleteUser(id) {
+    if (confirm("Are you sure you want to delete this user?")) {
+      fetch(`/users/delete/${id}`, { method: 'DELETE' })
+        .then(res => {
+          if (res.ok) {
+            users = users.filter(u => u.id !== id);
+            renderRows(users);
+          } else {
+            alert("Failed to delete user.");
+          }
+        });
+    }
+  }
+
+  function filterTable(colIndex) {
+    const input = document.getElementsByClassName("column-filter")[colIndex - 1].value.toLowerCase();
+    const filtered = users.filter(user => {
+      const fields = [user.id, user.name, user.username, user.role];
+      return fields[colIndex - 1]?.toString().toLowerCase().includes(input);
+    });
+    renderRows(filtered);
+  }
+
+  // Modal functions
+  function openCreateUserModal() {
+    const modal = document.getElementById('createUserModal');
+    const content = document.getElementById('createUserContent');
+
+    // Load create-user.html into modal
+    fetch('/pages/create-user.html')
+      .then(res => res.text())
+      .then(html => {
+        content.innerHTML = '<span class="close-modal" onclick="closeCreateUserModal()">×</span>' + html;
+      })
+      .catch(() => {
+        content.innerHTML = '<p>Failed to load form</p>';
+      });
+
+    modal.style.display = 'flex';
+  }
+
+  function closeCreateUserModal() {
+    document.getElementById('createUserModal').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>

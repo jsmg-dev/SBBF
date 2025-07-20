@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Create Customer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to right, #004aad, #007bff);
+      color: #333;
+    }
+
+    .form-container {
+      max-width: 950px;
+      margin: 50px auto;
+      background: #ffffff;
+      padding: 40px 50px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    h2 {
+      text-align: center;
+      color: #004aad;
+      margin-bottom: 35px;
+      font-size: 30px;
+      font-weight: 600;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1.5px solid #d0d0d0;
+      background-color: #f9f9f9;
+      font-size: 15px;
+      transition: border 0.2s, box-shadow 0.2s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #004aad;
+      outline: none;
+      box-shadow: 0 0 5px rgba(0, 74, 173, 0.2);
+      background-color: #fff;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    button {
+      margin-top: 30px;
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(to right, #004aad, #007bff);
+      color: #fff;
+      font-weight: bold;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #00347a, #0055cc);
+    }
+
+    @media (max-width: 600px) {
+      .form-container {
+        padding: 25px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-container">
+  <h2>Create New Customer</h2>
+  <form action="/customers/create" method="POST" id="customerForm">
+    <div class="form-grid">
+      <input type="text" name="customer_code" placeholder="Customer Code" required />
+      <input type="text" name="name" placeholder="Customer Name" required />
+      <input type="text" name="contact_no" placeholder="Contact Number" required />
+      <input type="text" name="alt_contact_no" placeholder="Alternate Contact Number" />
+      <input type="date" name="start_date" id="start_date" required />
+      <input type="date" name="end_date" id="end_date" readonly required />
+      <input type="number" name="loan_duration" placeholder="Loan Duration (months)" required />
+      <input type="number" name="loan_amount" id="loan_amount" placeholder="Loan Amount" required />
+      <input type="number" name="file_charge" id="file_charge" placeholder="File Charge" />
+      <input type="number" name="agent_fee" id="agent_fee" placeholder="Agent Fee" />
+      <input type="number" name="emi" id="emi" placeholder="EMI" />
+      <input type="number" name="advance_days" id="advance_days" placeholder="Advance Days" />
+      <input type="number" name="amount_after_deduction" id="amount_after_deduction" placeholder="Amount After EMI Deduction" readonly />
+      <input type="number" name="agent_commission" placeholder="Agent Commission in EMI" />
+      <select name="status" required>
+        <option value="">Select Status</option>
+        <option value="active">Active</option>
+        <option value="closed">Closed</option>
+      </select>
+    </div>
+
+    <textarea name="remark" placeholder="Remark (optional)" rows="4" style="margin-top: 25px;"></textarea>
+
+    <button type="submit">Create Customer</button>
+  </form>
+</div>
+
+<script>
+  const startDateInput = document.getElementById("start_date");
+  const endDateInput = document.getElementById("end_date");
+  const loanAmountInput = document.getElementById("loan_amount");
+  const fileChargeInput = document.getElementById("file_charge");
+  const agentFeeInput = document.getElementById("agent_fee");
+  const emiInput = document.getElementById("emi");
+  const advanceDaysInput = document.getElementById("advance_days");
+  const amountAfterDeductionInput = document.getElementById("amount_after_deduction");
+
+  // Auto-calculate End Date: Start Date + 100 days
+  startDateInput.addEventListener("change", () => {
+    const startDate = new Date(startDateInput.value);
+    if (!isNaN(startDate.getTime())) {
+      const endDate = new Date(startDate);
+      endDate.setDate(endDate.getDate() + 100);
+      endDateInput.value = endDate.toISOString().split('T')[0];
+    }
+  });
+
+  // Auto-calculate Given Amount After EMI Deduction
+  function calculateGivenAmount() {
+    const loanAmount = parseFloat(loanAmountInput.value) || 0;
+    const fileCharge = parseFloat(fileChargeInput.value) || 0;
+    const agentFee = parseFloat(agentFeeInput.value) || 0;
+    const emi = parseFloat(emiInput.value) || 0;
+    const advanceDays = parseFloat(advanceDaysInput.value) || 0;
+
+    const result = loanAmount - fileCharge - agentFee - (emi * advanceDays);
+    amountAfterDeductionInput.value = result > 0 ? result.toFixed(2) : 0;
+  }
+
+  [loanAmountInput, fileChargeInput, agentFeeInput, emiInput, advanceDaysInput].forEach(input => {
+    input.addEventListener("input", calculateGivenAmount);
+  });
+</script>
+
+</body>
+</html>

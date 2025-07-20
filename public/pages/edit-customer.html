@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Customer List - Loan Management</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* ... existing styles ... */
+    .icon-edit { color: #4caf50; }
+  </style>
+</head>
+<body>
+  <!-- ... navbar and container code ... -->
+
+  <table id="customerTable">
+    <thead>
+      <tr>
+        <th>Actions</th>
+        <!-- ... other headers ... -->
+      </tr>
+    </thead>
+    <tbody id="customerBody"></tbody>
+  </table>
+
+  <!-- Modal -->
+  <div class="modal" id="createCustomerModal">
+    <div class="modal-content" id="createCustomerContent">
+      <span class="close-modal" onclick="closeCreateCustomerModal()">×</span>
+    </div>
+  </div>
+
+  <script>
+    async function loadCustomers() {
+      const res = await fetch('/customers/list');
+      const customers = await res.json();
+      const tbody = document.getElementById('customerBody');
+      tbody.innerHTML = '';
+      customers.forEach(c => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td class="actions">
+            <button class="icon-btn icon-view" title="View" onclick="viewCustomer(${c.id})">🔍</button>
+            <button class="icon-btn icon-edit" title="Edit" onclick="editCustomer(${c.id})">✏️</button>
+            <button class="icon-btn icon-delete" title="Delete" onclick="deleteCustomer(${c.id})">🗑️</button>
+          </td>
+          <td>${c.id}</td>
+          <td>${c.customer_code}</td>
+          <td>${c.name}</td>
+          <td>${c.contact_no}</td>
+          <td>${c.alt_contact_no}</td>
+          <td>${c.start_date}</td>
+          <td>${c.end_date}</td>
+          <td>${c.loan_duration}</td>
+          <td>${c.loan_amount}</td>
+          <td>${c.file_charge}</td>
+          <td>${c.agent_fee}</td>
+          <td>${c.emi}</td>
+          <td>${c.advance_days}</td>
+          <td>${c.amount_after_deduction}</td>
+          <td>${c.agent_commission}</td>
+          <td>${c.status}</td>
+          <td>${c.remark}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function editCustomer(id) {
+      const modal = document.getElementById('createCustomerModal');
+      const content = document.getElementById('createCustomerContent');
+      fetch(`/pages/edit-customer.html?id=${id}`)
+        .then(res => res.text())
+        .then(html => {
+          const sanitized = html.replace(/<\/*(html|head|body)[^>]*>/gi, '');
+          content.innerHTML = '<span class="close-modal" onclick="closeCreateCustomerModal()">×</span>' + sanitized;
+          modal.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+          setTimeout(() => {
+            const form = content.querySelector('form');
+            if (form) {
+              form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+                const res = await fetch(`/customers/update/${id}`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(data)
+                });
+                const result = await res.json();
+                if (res.ok) {
+                  alert('Customer updated successfully!');
+                  closeCreateCustomerModal();
+                  loadCustomers();
+                } else {
+                  alert(result.error || 'Error occurred.');
+                }
+              });
+            }
+          }, 200);
+        });
+    }
+  </script>
+</body>
+</html>

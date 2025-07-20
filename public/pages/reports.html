@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Generate Report</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #004aad, #007bff);
+    }
+
+    header {
+      background-color: #003e99;
+      color: white;
+      padding: 16px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logout-button {
+      background-color: #f44336;
+      color: white;
+      padding: 8px 14px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .wrapper {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .form-container {
+      background: #fff;
+      border-radius: 16px;
+      padding: 30px 40px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      text-align: center;
+      color: #004aad;
+      margin-bottom: 25px;
+      font-size: 26px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .form-group {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    select, input {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      border: 1.5px solid #ccc;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    }
+
+    input:focus, select:focus {
+      border-color: #004aad;
+      outline: none;
+      background-color: #fff;
+      box-shadow: 0 0 4px rgba(0, 74, 173, 0.15);
+    }
+
+    .button-row {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 12px 20px;
+      background: linear-gradient(to right, #004aad, #007bff);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #00347a, #0055cc);
+    }
+
+    #reportResult {
+      margin-top: 30px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #e0e0e0;
+    }
+
+    @media (max-width: 768px) {
+      .form-row {
+        flex-direction: column;
+      }
+
+      .button-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .form-group {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div style="font-weight: bold; font-size: 18px;">Loan Management System</div>
+    <a href="/auth/logout" class="logout-button">Logout</a>
+  </header>
+
+  <!-- Wrapper for form and grid -->
+  <div class="wrapper">
+    <div class="form-container">
+      <h2>Generate Report</h2>
+      <form id="reportForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="report_type">Report Type</label>
+            <select id="report_type" name="report_type" required>
+              <option value="">-- Select Report Type --</option>
+              <option value="customer">Customer Details</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="start_date">Start Date</label>
+            <input type="date" id="start_date" name="start_date" required />
+          </div>
+
+          <div class="form-group">
+            <label for="end_date">End Date</label>
+            <input type="date" id="end_date" name="end_date" required />
+          </div>
+        </div>
+
+        <div class="button-row">
+          <button type="submit">Fetch Report</button>
+          <button type="button" id="exportBtn">Export CSV</button>
+        </div>
+      </form>
+    </div>
+
+    <div id="reportResult"></div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    let latestData = [];
+
+    document.getElementById('reportForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const reportType = document.getElementById('report_type').value;
+      const startDate = document.getElementById('start_date').value;
+      const endDate = document.getElementById('end_date').value;
+
+      if (!reportType || !startDate || !endDate) {
+        alert("❌ All fields are required.");
+        return;
+      }
+
+      try {
+        const response = await fetch(`/reports/generate?type=${reportType}&start=${startDate}&end=${endDate}`);
+        const data = await response.json();
+
+        latestData = data;
+
+        if (!data || data.length === 0) {
+          document.getElementById('reportResult').innerHTML = '<p>No records found for the selected range.</p>';
+          return;
+        }
+
+        let tableHTML = `<table><thead><tr>`;
+        Object.keys(data[0]).forEach(key => {
+          tableHTML += `<th>${key}</th>`;
+        });
+        tableHTML += `</tr></thead><tbody>`;
+        data.forEach(row => {
+          tableHTML += `<tr>`;
+          Object.values(row).forEach(val => {
+            tableHTML += `<td>${val}</td>`;
+          });
+          tableHTML += `</tr>`;
+        });
+        tableHTML += `</tbody></table>`;
+
+        document.getElementById('reportResult').innerHTML = tableHTML;
+
+      } catch (err) {
+        console.error('❌ Report fetch failed:', err);
+        alert("❌ Failed to fetch report.");
+      }
+    });
+
+    document.getElementById('exportBtn').addEventListener('click', function () {
+      if (!latestData || latestData.length === 0) {
+        alert("❌ No data available to export.");
+        return;
+      }
+
+      const headers = Object.keys(latestData[0]);
+      const rows = latestData.map(row => headers.map(h => `"${(row[h] || '').toString().replace(/"/g, '""')}"`).join(','));
+
+      const csvContent = [headers.join(','), ...rows].join('\n');
+      const blob = new Blob([csvContent], { type: 'text/csv' });
+
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'report.csv';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  </script>
+
+</body>
+</html>
