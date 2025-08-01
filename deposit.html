@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Deposit Amount</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/css/select2.min.css" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js"></script>
+
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 40px 20px;
+      background: linear-gradient(to right, #004aad, #007bff);
+    }
+    .form-container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      border-radius: 16px;
+      padding: 30px 40px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+    h2 {
+      text-align: center;
+      color: #004aad;
+      margin-bottom: 25px;
+      font-size: 26px;
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #333;
+    }
+    select, input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      border: 1.5px solid #ccc;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    }
+    input:focus, select:focus {
+      border-color: #004aad;
+      outline: none;
+      background-color: #fff;
+      box-shadow: 0 0 4px rgba(0, 74, 173, 0.15);
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(to right, #004aad, #007bff);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: linear-gradient(to right, #00347a, #0055cc);
+    }
+    @media (max-width: 600px) {
+      .form-container { padding: 25px; }
+      h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-container">
+  <h2>Deposit Amount</h2>
+  <form id="depositForm">
+    <label for="customer-dropdown">Select Customer</label>
+    <select id="customer-dropdown" required></select>
+
+    <label for="amount">Deposit Amount</label>
+    <input type="number" id="amount" placeholder="Enter amount" required />
+
+    <label for="penalty">Penalty</label>
+    <input type="number" id="penalty" placeholder="Enter penalty (optional)" />
+
+    <label for="date">Date</label>
+    <input type="date" id="date" required />
+
+    <button type="submit">Submit Deposit</button>
+  </form>
+</div>
+
+<script>
+  async function loadCustomers() {
+    try {
+      const res = await fetch('/deposits/dropdown/customers');
+      const customers = await res.json();
+
+      const select = $('#customer-dropdown');
+      select.empty();
+      select.append('<option value="">Select Customer</option>');
+
+      customers.forEach(c => {
+        const option = new Option(c.name, c.customer_code); // value = customer_code
+        $(option).attr('data-name', c.name);                // store customer name
+        select.append(option);
+      });
+
+      select.select2();
+    } catch (err) {
+      console.error('Failed to load customers:', err);
+      alert('❌ Failed to load customer list');
+    }
+  }
+
+  $('#depositForm').on('submit', async function (e) {
+    e.preventDefault();
+
+    const selectedOption = $('#customer-dropdown option:selected');
+    const customer_code = selectedOption.val();
+    const customer_name = selectedOption.data('name');
+    const amount = parseFloat($('#amount').val());
+    const penalty = parseFloat($('#penalty').val()) || 0;
+    const date = $('#date').val();
+
+    if (!customer_code || !customer_name || !amount || !date) {
+      alert('❌ Please fill in all required fields');
+      return;
+    }
+
+    try {
+      const res = await fetch('/deposits/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ customer_code, customer_name, amount, penalty, date })
+      });
+
+      const result = await res.json();
+
+      if (res.ok) {
+        alert('✅ Deposit submitted successfully');
+        window.location.href = '/pages/deposit-list.html';
+      } else {
+        alert('❌ Failed to submit: ' + (result.error || 'Unknown error'));
+      }
+    } catch (err) {
+      console.error('❌ Submit error:', err);
+      alert('Error submitting deposit.');
+    }
+  });
+
+  $(document).ready(loadCustomers);
+</script>
+
+</body>
+</html>

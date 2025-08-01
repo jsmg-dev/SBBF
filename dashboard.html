@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard - Loan Management System</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #004aad, #007bff);
+      color: white;
+      height: 100vh;
+      overflow: hidden;
+    }
+    header {
+      height: 60px;
+      background-color: #003e99;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 30px;
+    }
+    .logout-button {
+      background-color: #f44336;
+      color: white;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .dashboard-body {
+      display: flex;
+      height: calc(100vh - 60px);
+    }
+    .card-panel {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      padding: 30px;
+      align-content: center;
+    }
+    .card {
+      background-color: white;
+      color: #333;
+      text-align: center;
+      padding: 30px;
+      border-radius: 16px;
+      font-weight: 600;
+      font-size: 20px;
+      text-decoration: none;
+      transition: 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+      height: 160px;
+    }
+    .card i {
+      font-size: 34px;
+      margin-top: 12px;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+    }
+    .user      { background-color: #1e88e5; color: white; }
+    .customer  { background-color: #43a047; color: white; }
+    .deposit   { background-color: #f9a825; color: white; }
+    .renewal   { background-color: #8e24aa; color: white; }
+    .emi       { background-color: #e53935; color: white; }
+    .reports   { background-color: #00acc1; color: white; }
+
+    .dashboard-button {
+      background-color: #ffffff;
+      color: #004aad;
+      font-weight: bold;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+    .dashboard-button:hover {
+      background-color: #e0e0e0;
+    }
+
+    /* Chatbot styles */
+    #chatbot {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 320px;
+      max-height: 420px;
+      background: white;
+      color: #333;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 14px;
+      z-index: 1000;
+    }
+    #chatbot-header {
+      background-color: #004aad;
+      color: white;
+      padding: 12px 16px;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+    #chatbot-header i { cursor: pointer; }
+    #chatbot-messages {
+      flex: 1;
+      padding: 12px 16px;
+      overflow-y: auto;
+      background: #f7f7f7;
+    }
+    .message {
+      margin-bottom: 10px;
+      max-width: 80%;
+      padding: 10px 14px;
+      border-radius: 14px;
+      clear: both;
+      word-wrap: break-word;
+    }
+    .bot-message {
+      background-color: #004aad;
+      color: white;
+      float: left;
+      border-bottom-left-radius: 0;
+    }
+    .user-message {
+      background-color: #43a047;
+      color: white;
+      float: right;
+      border-bottom-right-radius: 0;
+    }
+    #chatbot-input-area {
+      display: flex;
+      border-top: 1px solid #ccc;
+      background: white;
+    }
+    #chatbot-input {
+      flex: 1;
+      border: none;
+      padding: 10px 14px;
+      font-size: 14px;
+    }
+    #chatbot-input:focus { outline: none; }
+    #chatbot-send-btn {
+      background-color: #004aad;
+      border: none;
+      color: white;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-size: 16px;
+      user-select: none;
+    }
+    #chatbot-send-btn:disabled {
+      background-color: #a1a1a1;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="left-buttons">
+      <a href="Newdashboard.html">
+        <button class="dashboard-button selected">Dashboard</button>
+      </a>
+      <a href="dashboard.html">
+        <button class="dashboard-button">Banking</button>
+      </a>
+    </div>
+    <a href="/auth/logout">
+      <button class="logout-button">Logout</button>
+    </a>
+  </header>
+
+  <div class="dashboard-body">
+    <div class="card-panel">
+      <a href="/pages/user-management.html" class="card user">
+        User Management <i class="fas fa-user-cog"></i>
+      </a>
+      <a href="/pages/customer-list.html" class="card customer">
+        Create Customer <i class="fas fa-users"></i>
+      </a>
+      <a href="/pages/deposit-list.html" class="card deposit">
+        Deposit <i class="fas fa-hand-holding-usd"></i>
+      </a>
+      <a href="/renewals" class="card renewal">
+        Renew Loan <i class="fas fa-sync-alt"></i>
+      </a>
+      <a href="/emi" class="card emi">
+        Next EMI <i class="fas fa-calendar-check"></i>
+      </a>
+      <a href="/pages/reports.html" class="card reports">
+        Reports <i class="fas fa-file-alt"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Chatbot Widget -->
+  <div id="chatbot">
+    <div id="chatbot-header">
+      <span>AI Customer Bot</span>
+      <i id="chatbot-toggle" class="fas fa-minus"></i>
+    </div>
+    <div id="chatbot-messages"></div>
+    <div id="chatbot-input-area">
+      <input id="chatbot-input" type="text" placeholder="Type your message..." autocomplete="off" />
+      <button id="chatbot-send-btn" disabled>➤</button>
+    </div>
+  </div>
+
+  <script>
+    const chatbot = (() => {
+      const messagesEl = document.getElementById('chatbot-messages');
+      const inputEl = document.getElementById('chatbot-input');
+      const sendBtn = document.getElementById('chatbot-send-btn');
+      const toggleBtn = document.getElementById('chatbot-toggle');
+      const chatbotEl = document.getElementById('chatbot');
+
+      let conversationStep = 0;
+      let customerData = {};
+
+      const botMessages = [
+        "Hi! I'm here to help you create a new customer. What's the customer's full name?",
+        "Great! Now, please provide the customer code.",
+        "Thanks! What is the initial amount for this customer?",
+        "Any penalty amount? If none, type 0.",
+        "Finally, what's the date? (format: YYYY-MM-DD)",
+        "Thanks! Creating the customer now..."
+      ];
+
+      function addMessage(text, fromBot = true) {
+        const msgDiv = document.createElement('div');
+        msgDiv.classList.add('message');
+        msgDiv.classList.add(fromBot ? 'bot-message' : 'user-message');
+        msgDiv.textContent = text;
+        messagesEl.appendChild(msgDiv);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+      }
+
+      function resetConversation() {
+        conversationStep = 0;
+        customerData = {};
+        messagesEl.innerHTML = '';
+        addMessage(botMessages[conversationStep]);
+        sendBtn.disabled = false;
+      }
+
+      async function submitCustomer(data) {
+        try {
+          const res = await fetch('/customers/create', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+          if (res.ok) {
+            addMessage("Customer created successfully! 🎉");
+          } else {
+            const error = await res.json();
+            addMessage("Error: " + (error.message || 'Failed to create customer.'));
+          }
+        } catch (err) {
+          addMessage("Error: " + err.message);
+        }
+      }
+
+      async function handleUserInput(text) {
+        if (!text.trim()) return;
+
+        addMessage(text, false);
+
+        switch(conversationStep) {
+          case 0: customerData.customer_name = text.trim(); break;
+          case 1: customerData.customer_code = text.trim(); break;
+          case 2:
+            if (isNaN(text) || Number(text) < 0) return addMessage("Enter valid amount.");
+            customerData.amount = Number(text); break;
+          case 3:
+            if (isNaN(text) || Number(text) < 0) return addMessage("Enter valid penalty.");
+            customerData.penalty = Number(text); break;
+          case 4:
+            if (!/^\d{4}-\d{2}-\d{2}$/.test(text.trim())) return addMessage("Use YYYY-MM-DD.");
+            customerData.date = text.trim();
+            addMessage(botMessages[++conversationStep]);
+            sendBtn.disabled = inputEl.disabled = true;
+            await submitCustomer(customerData);
+            return setTimeout(() => {
+              resetConversation();
+              inputEl.disabled = false;
+              sendBtn.disabled = false;
+            }, 2000);
+        }
+        addMessage(botMessages[++conversationStep]);
+      }
+
+      function init() {
+        resetConversation();
+        sendBtn.addEventListener('click', () => {
+          handleUserInput(inputEl.value);
+          inputEl.value = '';
+          sendBtn.disabled = true;
+        });
+        inputEl.addEventListener('input', () => {
+          sendBtn.disabled = inputEl.value.trim() === '';
+        });
+        inputEl.addEventListener('keydown', e => {
+          if (e.key === 'Enter' && !sendBtn.disabled) {
+            sendBtn.click();
+            e.preventDefault();
+          }
+        });
+        toggleBtn.addEventListener('click', () => {
+          const collapsed = chatbotEl.style.height === '40px';
+          chatbotEl.style.height = collapsed ? '420px' : '40px';
+          messagesEl.style.display = collapsed ? 'block' : 'none';
+          inputEl.style.display = collapsed ? 'inline-block' : 'none';
+          sendBtn.style.display = collapsed ? 'inline-block' : 'none';
+          toggleBtn.classList.toggle('fa-minus', collapsed);
+          toggleBtn.classList.toggle('fa-plus', !collapsed);
+        });
+      }
+
+      return { init };
+    })();
+
+    window.onload = () => chatbot.init();
+  </script>
+</body>
+</html>
