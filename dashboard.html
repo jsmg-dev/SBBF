@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard - Loan Management System</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- ✅ Font Awesome v6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-Tz+T4kTCkJ1Q0e8Q6kuYOz3QkPz+ixIDsnR2WEyXgXMYZUv7O8Et5ySrP3Y9Qmgh3YUC+d3HLWbK9kOjGq0NFA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #004aad, #007bff);
+      color: white;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    header {
+      height: 60px;
+      background-color: #003e99;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 30px;
+    }
+
+    .logout-button {
+      background-color: #f44336;
+      color: white;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .dashboard-body {
+      display: flex;
+      height: calc(100vh - 60px);
+    }
+
+    .card-panel {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      padding: 20px;
+    }
+
+    .card {
+      background-color: white;
+      color: #333;
+      text-align: center;
+      padding: 16px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      transition: 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .card i {
+      font-size: 26px;
+      margin-top: 8px;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+    }
+
+    .user      { background-color: #1e88e5; color: white; }
+    .customer  { background-color: #43a047; color: white; }
+    .deposit   { background-color: #f9a825; color: white; }
+    .renewal   { background-color: #8e24aa; color: white; }
+    .emi       { background-color: #e53935; color: white; }
+    .reports    { background-color: #00acc1; color: white; }
+
+    .chart-panel {
+      width: 600px;
+      background-color: white;
+      color: #000;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .chart-panel h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    canvas {
+      max-height: 400px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo"><strong>Loan Management Dashboard</strong></div>
+    <a href="/auth/logout" class="logout-button">Logout</a>
+  </header>
+
+  <div class="dashboard-body">
+    <div class="card-panel">
+      <a href="/pages/user-management.html" class="card user">
+        User Management
+        <i class="fas fa-user-cog"></i>
+      </a>
+      <a href="/pages/customer-list.html" class="card customer">
+        Create Customer
+        <i class="fas fa-users"></i>
+      </a>
+      <a href="/pages/deposit-list.html" class="card deposit">
+        Deposit
+        <i class="fas fa-hand-holding-usd"></i>
+      </a>
+      <a href="/renewals" class="card renewal">
+        Renew Loan
+        <i class="fas fa-sync-alt"></i>
+      </a>
+      <a href="/emi" class="card emi">
+        Next EMI
+        <i class="fas fa-calendar-check"></i>
+      </a>
+      <a href="/pages/reports.html" class="card report">
+        Reports
+        <i class="fas fa-file-alt"></i>
+      </a>
+    </div>
+
+    <div class="chart-panel">
+      <h3>Customers by Date</h3>
+      <canvas id="customerBarChart"></canvas>
+    </div>
+  </div>
+
+  <script>
+    async function loadCustomerChart() {
+      try {
+        const res = await fetch('/api/dashboard-stats');
+        const data = await res.json();
+        const labels = data.map(d => d.start_date);
+        const counts = data.map(d => d.count);
+
+        new Chart(document.getElementById('customerBarChart'), {
+          type: 'bar',
+          data: {
+            labels: labels,
+            datasets: [{
+              label: 'Customers',
+              data: counts,
+              backgroundColor: '#43a047'
+            }]
+          },
+          options: {
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  afterLabel: (ctx) => 'Names: ' + data[ctx.dataIndex].names
+                }
+              }
+            },
+            scales: {
+              y: { beginAtZero: true, ticks: { color: '#333' } },
+              x: { ticks: { color: '#333' } }
+            }
+          }
+        });
+      } catch (err) {
+        console.error('Chart Load Error:', err);
+      }
+    }
+
+    window.onload = loadCustomerChart;
+  </script>
+
+</body>
+</html>
