@@ -1,0 +1,101 @@
+User-agent: *
+Allow: /
+Disallow: /work.html
+Disallow: /work/
+Disallow: /ventures.html
+Disallow: /ventures/
+Disallow: /projects.html
+Disallow: /projects/
+Disallow: /portfolio.html
+Disallow: /portfolio/
+Disallow: /services.html
+Disallow: /services/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /*.html$
+
+# Sitemap
+Sitemap: https://sbbf.in/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
+Disallow: /work.html
+Disallow: /work/
+Disallow: /ventures.html
+Disallow: /ventures/
+Disallow: /projects.html
+Disallow: /projects/
+Disallow: /portfolio.html
+Disallow: /portfolio/
+Disallow: /services.html
+Disallow: /services/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /work.html
+Disallow: /work/
+Disallow: /ventures.html
+Disallow: /ventures/
+Disallow: /projects.html
+Disallow: /projects/
+Disallow: /portfolio.html
+Disallow: /portfolio/
+Disallow: /services.html
+Disallow: /services/
+
+User-agent: Slurp
+Allow: /
+Disallow: /work.html
+Disallow: /work/
+Disallow: /ventures.html
+Disallow: /ventures/
+Disallow: /projects.html
+Disallow: /projects/
+Disallow: /portfolio.html
+Disallow: /portfolio/
+Disallow: /services.html
+Disallow: /services/
+
+User-agent: DuckDuckBot
+Allow: /
+Disallow: /work.html
+Disallow: /work/
+Disallow: /ventures.html
+Disallow: /ventures/
+Disallow: /projects.html
+Disallow: /projects/
+Disallow: /portfolio.html
+Disallow: /portfolio/
+Disallow: /services.html
+Disallow: /services/
+
+User-agent: Baiduspider
+Allow: /
+Disallow: /work.html
+Disallow: /work/
+Disallow: /ventures.html
+Disallow: /ventures/
+Disallow: /projects.html
+Disallow: /projects/
+Disallow: /portfolio.html
+Disallow: /portfolio/
+Disallow: /services.html
+Disallow: /services/
+
+User-agent: YandexBot
+Allow: /
+Disallow: /work.html
+Disallow: /work/
+Disallow: /ventures.html
+Disallow: /ventures/
+Disallow: /projects.html
+Disallow: /projects/
+Disallow: /portfolio.html
+Disallow: /portfolio/
+Disallow: /services.html
+Disallow: /services/

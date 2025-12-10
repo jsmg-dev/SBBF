@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation - SBB Foundation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" aria-label="SBBF Home">
+                    <div class="logo-container">
+                        <div class="logo-icon">
+                            <div class="logo-square"></div>
+                            <div class="logo-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="logo-text">
+                            <span class="logo-name">SBBF</span>
+                            <span class="logo-tagline">SOFTWARE & INNOVATION</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <ul class="nav-menu" role="menubar">
+                <li role="none"><a href="index.html" class="nav-link" role="menuitem">Home</a></li>
+                <li role="none"><a href="index.html#about" class="nav-link" role="menuitem">About</a></li>
+                <li role="none"><a href="index.html#solutions" class="nav-link" role="menuitem">Solutions</a></li>
+                <li role="none"><a href="index.html#portfolio" class="nav-link" role="menuitem">Portfolio</a></li>
+                <li role="none"><a href="index.html#gallery" class="nav-link" role="menuitem">Gallery</a></li>
+                <li role="none"><a href="index.html#careers" class="nav-link" role="menuitem">Careers</a></li>
+                <li role="none"><a href="donation.html" class="nav-link active" role="menuitem">Donation</a></li>
+                <li role="none"><a href="contact.html" class="nav-link" role="menuitem">Contact</a></li>
+                <li role="none"><a href="admin-login.html" class="nav-link" role="menuitem" style="color: #14b8a6;"><i class="fas fa-shield-alt"></i> Admin</a></li>
+            </ul>
+            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Donation Section -->
+    <section class="donation-section" style="min-height: calc(100vh - 65px); padding: 80px 0;">
+        <div class="container">
+            <div class="donation-container" style="max-width: 1200px; margin: 0 auto;">
+                <!-- Progress Steps -->
+                <div class="donation-progress" id="donationProgress">
+                    <div class="progress-step active" data-step="1">
+                        <div class="step-circle">1</div>
+                        <div class="step-label">Cause</div>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="2">
+                        <div class="step-circle">2</div>
+                        <div class="step-label">Package</div>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="3">
+                        <div class="step-circle">3</div>
+                        <div class="step-label">Quantity</div>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="4">
+                        <div class="step-circle">4</div>
+                        <div class="step-label">Info</div>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="5">
+                        <div class="step-circle">5</div>
+                        <div class="step-label">Payment</div>
+                    </div>
+                </div>
+
+                <!-- Step Content -->
+                <div class="donation-content">
+                    <!-- Step 1: Cause Selection -->
+                    <div class="donation-step active" id="step1">
+                        <h2 class="section-title">Select a Cause</h2>
+                        <p class="section-subtitle">Choose the cause you want to support</p>
+                        <div class="causes-grid">
+                            <div class="cause-card" data-cause="child-education">
+                                <div class="cause-icon" style="background: linear-gradient(135deg, #3b82f6, #2563eb);">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <h3>Child Education</h3>
+                                <p>Sponsor a child's education and provide them with books, uniforms, and school fees</p>
+                            </div>
+                            <div class="cause-card" data-cause="women-empowerment">
+                                <div class="cause-icon" style="background: linear-gradient(135deg, #ec4899, #db2777);">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h3>Women Empowerment</h3>
+                                <p>Empower women through skill training, starter kits, and monthly support programs</p>
+                            </div>
+                            <div class="cause-card" data-cause="cow-welfare">
+                                <div class="cause-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <h3>Cow Welfare</h3>
+                                <p>Adopt a cow or support monthly maintenance. Contribute to Gau Seva</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Package Selection -->
+                    <div class="donation-step" id="step2">
+                        <button class="btn-back" onclick="goToStep(1)"><i class="fas fa-arrow-left"></i> Back to Causes</button>
+                        <h2 class="section-title">Select a Package</h2>
+                        <p class="section-subtitle">Choose the package that fits your capacity to give</p>
+                        <div class="packages-grid" id="packagesGrid"></div>
+                    </div>
+
+                    <!-- Step 3: Quantity Selection -->
+                    <div class="donation-step" id="step3">
+                        <button class="btn-back" onclick="goToStep(2)"><i class="fas fa-arrow-left"></i> Back to Packages</button>
+                        <h2 class="section-title">Select Quantity</h2>
+                        <p class="section-subtitle">How many units would you like to sponsor?</p>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(-1)">-</button>
+                            <input type="number" id="quantityInput" value="1" min="1" onchange="updateQuantity()">
+                            <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
+                        </div>
+                        <div class="package-summary" id="packageSummary"></div>
+                        <button class="btn-primary" onclick="goToStep(4)">Continue</button>
+                    </div>
+
+                    <!-- Step 4: Donor Information -->
+                    <div class="donation-step" id="step4">
+                        <button class="btn-back" onclick="goToStep(3)"><i class="fas fa-arrow-left"></i> Back to Quantity</button>
+                        <h2 class="section-title">Your Information</h2>
+                        <p class="section-subtitle">Please provide your details</p>
+                        <form id="donorForm" class="donor-form">
+                            <div class="form-group">
+                                <label>Full Name *</label>
+                                <input type="text" id="donorName" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address *</label>
+                                <input type="email" id="donorEmail" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number *</label>
+                                <input type="tel" id="donorPhone" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Address *</label>
+                                <textarea id="donorAddress" rows="3" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary">Continue to Payment</button>
+                        </form>
+                    </div>
+
+                    <!-- Step 5: Payment -->
+                    <div class="donation-step" id="step5">
+                        <button class="btn-back" onclick="goToStep(4)"><i class="fas fa-arrow-left"></i> Back to Info</button>
+                        <h2 class="section-title">Payment</h2>
+                        <p class="section-subtitle">Choose your payment method</p>
+                        <div class="payment-summary" id="paymentSummary"></div>
+                        <div class="payment-methods">
+                            <button class="payment-method-btn" onclick="initiateRazorpay()">
+                                <i class="fas fa-credit-card"></i>
+                                <span>Pay with Razorpay</span>
+                                <small>UPI, Cards, Net Banking, Wallets</small>
+                            </button>
+                            <button class="payment-method-btn" onclick="initiateStripe()">
+                                <i class="fab fa-stripe"></i>
+                                <span>Pay with Stripe</span>
+                                <small>International Cards</small>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Success Step -->
+                    <div class="donation-step" id="stepSuccess" style="display: none;">
+                        <div class="success-content">
+                            <i class="fas fa-check-circle success-icon"></i>
+                            <h2>Payment Successful!</h2>
+                            <p>Thank you for your generous donation</p>
+                            <div class="donation-id" id="donationIdDisplay"></div>
+                            <div class="success-actions">
+                                <button class="btn-primary" onclick="downloadReceipt()">
+                                    <i class="fas fa-download"></i> Download Receipt
+                                </button>
+                                <button class="btn-secondary" onclick="downloadCertificate()">
+                                    <i class="fas fa-award"></i> Download Certificate
+                                </button>
+                            </div>
+                            <button class="btn-link" onclick="resetDonation()">Make Another Donation</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Donation Summary Sidebar -->
+                <div class="donation-summary" id="donationSummary" style="display: none;">
+                    <h3>Donation Summary</h3>
+                    <div class="summary-content" id="summaryContent"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo.svg" alt="SBB Foundation Logo" class="footer-logo-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <h3 style="display:none;">SBBF</h3>
+                    <p>Transforming Ideas into Intelligent Solutions</p>
+                </div>
+                <nav class="footer-links" role="navigation" aria-label="Footer navigation">
+                    <div class="link-group">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="index.html#about">About</a></li>
+                            <li><a href="index.html#solutions">Solutions</a></li>
+                            <li><a href="index.html#careers">Careers</a></li>
+                            <li><a href="donation.html">Donation</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="admin-login.html" style="color: #14b8a6;"><i class="fas fa-shield-alt"></i> Admin</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SBB Foundation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="donation.js"></script>
+</body>
+</html>
+

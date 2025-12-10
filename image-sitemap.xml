@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    
+    <!-- Homepage Images -->
+    <url>
+        <loc>https://sbbf.in/</loc>
+        <image:image>
+            <image:loc>https://sbbf.in/banner.jpeg</image:loc>
+            <image:title>SBB Foundation Software Development Company Banner</image:title>
+            <image:caption>SBB Foundation - Leading Software Development Company specializing in mobile apps, fintech solutions, AI analytics, and enterprise automation</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://sbbf.in/founder.jpeg</image:loc>
+            <image:title>Jitendra Sharma - Founder & CEO of SBB Foundation</image:title>
+            <image:caption>Jitendra Sharma, Founder & CEO of SBB Foundation - Software Development Company</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- Gallery Images - Press Coverage -->
+    <url>
+        <loc>https://sbbf.in/#gallery</loc>
+        <image:image>
+            <image:loc>https://sbbf.in/images/press/press1.jpeg</image:loc>
+            <image:title>SBB Foundation Press Coverage 1</image:title>
+            <image:caption>SBB Foundation Press Coverage featuring Jitendra Sharma CEO Software Development Company</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://sbbf.in/images/press/press2.jpeg</image:loc>
+            <image:title>SBB Foundation Press Coverage 2</image:title>
+            <image:caption>SBB Foundation Press Coverage featuring Jitendra Sharma CEO Software Development Company</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://sbbf.in/images/press/press3.jpeg</image:loc>
+            <image:title>SBB Foundation Press Coverage 3</image:title>
+            <image:caption>SBB Foundation Press Coverage featuring Jitendra Sharma CEO Software Development Company</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://sbbf.in/images/press/press4.jpeg</image:loc>
+            <image:title>SBB Foundation Press Coverage 4</image:title>
+            <image:caption>SBB Foundation Press Coverage featuring Jitendra Sharma CEO Software Development Company</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://sbbf.in/images/press/press5.jpeg</image:loc>
+            <image:title>SBB Foundation Press Coverage 5</image:title>
+            <image:caption>SBB Foundation Press Coverage featuring Jitendra Sharma CEO Software Development Company</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- Gallery Images - Events -->
+    <url>
+        <loc>https://sbbf.in/#gallery</loc>
+        <image:image>
+            <image:loc>https://sbbf.in/images/event/event1.jpeg</image:loc>
+            <image:title>SBB Foundation Event 1</image:title>
+            <image:caption>SBB Foundation Event featuring Jitendra Sharma CEO Software Development Company</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://sbbf.in/images/event/event2.jpeg</image:loc>
+            <image:title>SBB Foundation Event 2</image:title>
+            <image:caption>SBB Foundation Event featuring Jitendra Sharma CEO Software Development Company</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://sbbf.in/images/event/event3.jpeg</image:loc>
+            <image:title>SBB Foundation Event 3</image:title>
+            <image:caption>SBB Foundation Event featuring Jitendra Sharma CEO Software Development Company</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://sbbf.in/images/event/event4.jpeg</image:loc>
+            <image:title>SBB Foundation Event 4</image:title>
+            <image:caption>SBB Foundation Event featuring Jitendra Sharma CEO Software Development Company</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://sbbf.in/images/event/event5.jpeg</image:loc>
+            <image:title>SBB Foundation Event 5</image:title>
+            <image:caption>SBB Foundation Event featuring Jitendra Sharma CEO Software Development Company</image:caption>
+        </image:image>
+    </url>
+    
+</urlset>
