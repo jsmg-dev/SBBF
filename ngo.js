@@ -20,7 +20,7 @@ const translations = {
         childTier1: "₹1100 / month: Basic study materials, meals, and school support + monthly progress/attendance updates",
         childTier2: "₹2100 / month: Complete educational package (materials, uniform, meals, extra classes) + activity/achievement updates",
         childTier3: "₹5100 / month: Life-changing package (education, nutrition, health, better environment) + detailed reports/photos/videos",
-        womenDesc: "Skill training, self-help groups, and micro-enterprise linkages for sustainable incomes.",
+        womenDesc: "Women’s Empowerment",
         womenIntro: "We build women’s economic independence through skill training, digital literacy, tailoring, and SHG formation. We also provide seed capital, market access, and sales opportunities.",
         womenActivities: "Key activities: digital education, tailoring batches, SHG formation with financial guidance, market linkage, and micro-enterprise support.",
         womenTier1: "₹11,000 / month: Foundational skill training and SHG onboarding + monthly progress updates",
