@@ -279,6 +279,44 @@ header {
     overflow: hidden;
 }
 
+.contact-form {
+    display: grid;
+    gap: 12px;
+}
+
+.contact-form .form-row {
+    display: grid;
+    gap: 6px;
+}
+
+.contact-form label {
+    font-weight: 700;
+    color: var(--blue);
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: #fff;
+    font-size: 1rem;
+    font-family: inherit;
+    color: var(--text);
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: 2px solid rgba(30, 58, 138, 0.2);
+    border-color: rgba(30, 58, 138, 0.2);
+}
+
 .footer {
     background: #0f172a;
     color: #e2e8f0;
