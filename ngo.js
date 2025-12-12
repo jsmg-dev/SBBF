@@ -98,6 +98,20 @@ const translations = {
 // Events and press galleries (extend ranges if more photos are added)
 const eventImages = Array.from({ length: 78 }, (_, i) => `images/event/event${i + 1}.jpeg`)
     .filter(src => !src.includes('event76.jpeg') && !src.includes('event77.jpeg') && !src.includes('event78.jpeg'));
+	// ➕ Add your new photos here
+eventImages.unshift(
+    "images/event/K1.jpeg",
+    "images/event/K2.jpeg",
+	"images/event/K3.jpeg",
+	"images/event/K4.jpeg",
+	"images/event/K5.jpeg",
+	"images/event/K6.jpeg",
+	"images/event/event71.jpeg",
+	"images/event/event72.jpeg",
+	"images/event/event73.jpeg",
+	"images/event/event74.jpeg",
+	"images/event/event75.jpeg"
+);
 const pressImages = Array.from({ length: 52 }, (_, i) => `images/press/press${i + 1}.jpeg`).filter(src => !src.includes('press49.jpeg'));
 
 const state = { lang: 'en' };
