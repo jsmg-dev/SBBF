@@ -100,6 +100,12 @@ const eventImages = Array.from({ length: 78 }, (_, i) => `images/event/event${i 
     .filter(src => !src.includes('event76.jpeg') && !src.includes('event77.jpeg') && !src.includes('event78.jpeg'));
 	// ➕ Add your new photos here
 eventImages.unshift(
+    "images/event/K8.jpeg",
+    "images/event/K9.jpeg",
+    "images/event/K10.jpeg",
+    "images/event/K11.jpeg",
+    "images/event/K12.jpeg",
+    "images/event/K13.jpeg",
     "images/event/K7.jpeg",
     "images/event/B1.jpeg",
     "images/event/K2.jpeg",
