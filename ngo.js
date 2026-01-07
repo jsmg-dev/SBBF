@@ -101,7 +101,7 @@ const eventImages = Array.from({ length: 78 }, (_, i) => `images/event/event${i 
 	// ➕ Add your new photos here
 eventImages.unshift(
     "images/event/N1.jpeg",
-    "images/event/N2.jpeg",
+    "images/event/N141.jpg",
     "images/event/N3.jpeg",
     "images/event/N4.jpeg",
     "images/event/N5.jpeg",
@@ -152,7 +152,7 @@ eventImages.unshift(
 	"images/event/event74.jpeg",
 	"images/event/event75.jpeg"
 );
-const pressImages = Array.from({ length: 52 }, (_, i) => `images/press/press${i + 1}.jpeg`).filter(src => !src.includes('press49.jpeg'));
+const pressImages = Array.from({ length: 52 }, (_, i) => `images/press/press${i + 1}.jpeg`).filter(src => !src.includes('press149.jpeg'));
 
 const state = { lang: 'en' };
 
