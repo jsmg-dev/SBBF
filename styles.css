@@ -4351,4 +4351,21 @@ section {
         font-size: 0.9rem !important;
     }
 }
+/* ===== Hero Heading: Strong & Elegant ===== */
+
+.hero h1 {
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1.15;
+    font-weight: 800;
+    letter-spacing: -0.6px;
+    color: #111827;
+    margin-top: 6px;
+}
+
+.hero .lead {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #374151;
+    max-width: 640px;
+}
 
