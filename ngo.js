@@ -9,8 +9,6 @@ const translations = {
         volunteer: "Volunteer",
         counters: ["Cows adopted", "Children sponsored", "Meals served", "Projects completed"],
         aboutTitle: "Why SBB Foundation",
-        aboutLead: "Registered NGO with Darpan, 12A & 80G (Provisional). Donors receive official receipts, regular updates, photos, and reports—full transparency, always.
-पंजीकृत संस्था, पूरी पारदर्शिता के साथ।",
         programsTitle: "Programs",
         cowDesc: "Take responsibility for a cow through our gaushala program in Rajasthan—safe shelter, nutritious fodder, and regular veterinary care with monthly photo/status updates.",
         adoptDesc: "Take responsibility for a cow through our Rajasthan gaushala. Your support provides safe shelter, nutritious fodder, and regular veterinary care. Monthly photo/status updates connect you to the seva.",
