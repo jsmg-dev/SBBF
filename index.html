@@ -5,108 +5,196 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SBB Foundation — Cow Adoption & Child Sponsorship</title>
     <meta name="description" content="SBB Foundation (Reg. No: 202503182112288, Darpan ID: RJ/2025/0912199, 12A Provisional URN: ABNTS3243DE20251, 80G Provisional URN: ABNTS3243DF20251) supports gaushala care, child sponsorship, and women empowerment in Rajasthan. Donations eligible for tax benefit.">
-    <meta name="theme-color" content="#FFDAB9">
+    <meta name="theme-color" content="#0f6b52">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="ngo.css">
 </head>
 <body>
-    <header>
+    <header class="site-header">
         <div class="container nav">
             <a class="brand" href="#top">
                 <img src="logo.jpeg" alt="SBB Foundation logo">
                 <span>SBB Foundation</span>
             </a>
-            <nav class="nav-links">
+            <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="nav-links" id="nav-links">
+                <a href="#about" data-i18n="aboutNav">About</a>
                 <a href="#team" data-i18n="teamTitle">Our Team</a>
-                <a href="#programs">Programs</a>
-                <a href="#donate">Donate</a>
-                <a href="#gaushala">Gaushala</a>
+                <a href="#programs" data-i18n="programsTitle">Programs</a>
+                <a href="#donate" data-i18n="donateNav">Contribute</a>
+                <a href="#gaushala" data-i18n="gaushalaTitle">Gaushala</a>
                 <a href="#gallery">Gallery</a>
-                <a href="#news">News</a>
-                <a href="#contact">Contact</a>
+                <a href="#news" data-i18n="newsTitle">News</a>
+                <a href="#contact" data-i18n="contactTitle">Contact</a>
             </nav>
             <div class="actions">
                 <button id="lang-toggle" class="pill lang-toggle" aria-label="Toggle language">EN</button>
-                <a class="pill secondary" href="#donate" data-i18n="donateNow">Donate Now — दान करें</a>
+                <a class="pill secondary" href="#donate" data-i18n="donateNow">Contribute</a>
             </div>
         </div>
     </header>
 
-    <main id="top" class="container">
-        <section class="hero">
-            <div class="stack">
-                <div class="tax-badge fade-in">
-                    <div class="tax-icons">
-                        <span>✔ 12A</span>
-                        <span>✔ 80G</span>
-                        <span>✔ Darpan</span>
-                    </div>
-                
-                    <p>
-                        <strong>All donations are eligible for tax benefits</strong> under provisional
-                        <strong>12A & 80G registration</strong>.<br>
-                        सभी दान <strong>12A व 80G</strong> (प्रावधिक) के अंतर्गत कर-छूट योग्य हैं।
-                    </p>
-                
-                    <p class="urn">
-                        Official receipt with valid URN provided<br>
-                        वैध URN सहित रसीद प्रदान की जाती है —
-                        <strong>URN: ABNTS3243DF20251</strong>
-                    </p>
-                </div>
-                
-               
-                <h1 data-i18n="heroTitle">Adopt a Cow. Sponsor a Child. Serve Humanity.</h1>
-                <p class="lead" data-i18n="heroLead">Transparent, grassroots impact in Rajasthan through gaushala care, child sponsorship, and women empowerment.</p>
-                <div class="cta-row">
-                    <a class="pill secondary" data-scroll="donate" data-i18n="donateNow" href="#donate">Donate Now — दान करें</a>
-                    <a class="pill" data-scroll="programs" data-i18n="adoptCow" href="#programs">Adopt a Cow</a>
-                    <a class="pill" data-scroll="programs" data-i18n="sponsorChild" href="#programs">Sponsor a Child</a>
-                    <a class="pill" data-scroll="contact" data-i18n="volunteer" href="#contact">Volunteer</a>
-                </div>
-                <div class="impact-grid card">
-                    <div class="impact">
-                        <h3>1,250+</h3>
-                        <p data-i18n="counters" data-i18n-item> Cows adopted </p>
-                    </div>
-                    <div class="impact">
-                        <h3>620+</h3>
-                        <p data-i18n="counters" data-i18n-item> Children sponsored </p>
-                    </div>
-                    <div class="impact">
-                        <h3>75k+</h3>
-                        <p data-i18n="counters" data-i18n-item> Meals served </p>
-                    </div>
-                    <div class="impact">
-                        <h3>48</h3>
-                        <p data-i18n="counters" data-i18n-item> Projects completed </p>
+    <section class="hero-slider" id="hero-slider" aria-label="Featured highlights">
+        <div class="hero-slide active">
+            <img src="banner.jpeg" alt="SBB Foundation community work">
+            <div class="hero-caption">
+                <div class="container">
+                    <h1 data-i18n="slide1Title">Gau Seva &amp; Compassionate Care</h1>
+                    <p data-i18n="slide1Lead">Building a modern Gaushala and Cow Hospital for injured, abandoned, and needy cattle across Rajasthan.</p>
+                    <div class="cta-row">
+                        <a class="pill secondary" href="#donate" data-i18n="donateNow">Contribute</a>
+                        <a class="pill outline-light" href="#programs" data-i18n="programsTitle">Our Programs</a>
                     </div>
                 </div>
             </div>
-            <div class="card cta-card">
-                <img src="banner.jpeg" alt="SBB Foundation fieldwork banner">
-                <div class="stack">
-                    <strong data-i18n="aboutTitle">Why SBB Foundation</strong>
-                    <p class="lead" data-i18n="aboutLead">Trusted Impact: We have a proven track record of transforming lives through education, women empowerment, and cow welfare.
+        </div>
+        <div class="hero-slide">
+            <img src="images/event/Cow1.jpeg" alt="Cow adoption at gaushala">
+            <div class="hero-caption">
+                <div class="container">
+                    <h1 data-i18n="slide2Title">Adopt a Cow. Serve with Devotion.</h1>
+                    <p data-i18n="slide2Lead">Safe shelter, nutritious fodder, and veterinary care with monthly photo updates for every donor.</p>
+                    <a class="pill secondary" href="#programs" data-i18n="adoptCow">Adopt a Cow</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-slide">
+            <img src="images/event/Child.jpeg" alt="Child education sponsorship">
+            <div class="hero-caption">
+                <div class="container">
+                    <h1 data-i18n="slide3Title">Learners Today, Leaders Tomorrow.</h1>
+                    <p data-i18n="slide3Lead">Sponsor a child's education, nutrition, and safe learning environment with regular progress updates.</p>
+                    <a class="pill secondary" href="#programs" data-i18n="sponsorChild">Sponsor a Child</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-slide">
+            <img src="images/event/shg.jpg" alt="Women empowerment training">
+            <div class="hero-caption">
+                <div class="container">
+                    <h1 data-i18n="slide4Title">Empowered Women, Strong Communities.</h1>
+                    <p data-i18n="slide4Lead">Skill training, SHG formation, and livelihood support for women's economic independence.</p>
+                    <a class="pill secondary" href="#programs" data-i18n="womenDesc">Women Empowerment</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-slide">
+            <img src="images/event/event1.jpeg" alt="Food distribution drive">
+            <div class="hero-caption">
+                <div class="container">
+                    <h1 data-i18n="slide5Title">Serving Humanity, One Meal at a Time.</h1>
+                    <p data-i18n="slide5Lead">Food distribution, blankets, and essentials reaching the most vulnerable families in need.</p>
+                    <a class="pill secondary" href="#donate" data-i18n="donateNow">Contribute</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-dots" id="hero-dots" aria-hidden="true"></div>
+    </section>
 
-                        Holistic Approach: From skill training and self-help groups to nutrition and healthcare, we address multiple aspects of community development.
-                        
-                        Transparency: Donors receive regular updates, photos, and reports on how their contributions are making a real difference.
-                        
-                        Cultural & Environmental Commitment: We preserve Indian traditions while promoting sustainable practices, including cow protection and eco-conscious initiatives.
-                        
-                        Direct Support: Beyond programs, we provide blankets, food, and essentials directly to those in need.
-                        
-                        In short: With SBB Foundation, your support creates lasting, measurable, and meaningful change.</p>
-                    <a class="pill secondary" href="#donate" data-i18n="donateNow">Donate Now — दान करें</a>
+    <div class="tax-strip">
+        <div class="container">
+            <div class="tax-icons">
+                <span>✔ 12A</span>
+                <span>✔ 80G</span>
+                <span>✔ Darpan</span>
+            </div>
+            <p><strong>All donations eligible for tax benefits</strong> · URN: ABNTS3243DF20251</p>
+        </div>
+    </div>
+
+    <main id="top">
+        <section id="about" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2><span class="title-accent" data-i18n="knowingLabel">Knowing</span> <span data-i18n="knowingName">SBB</span></h2>
+                </div>
+                <div class="about-block">
+                    <p data-i18n="aboutP1">Shree Banke Bihari Foundation is a registered non-profit organisation based in Rajasthan, working to drive meaningful change through gau seva, child sponsorship, women empowerment, and humanitarian outreach. With provisional 12A, 80G, and Darpan registration, the Foundation ensures transparency and accountability in every initiative.</p>
+                    <p data-i18n="aboutP2">We design and implement structured programs across cow welfare, education, livelihoods, and community development — each rooted in grassroots realities and built for long-term impact.</p>
+                    <p data-i18n="aboutP3">Through food distribution drives, gaushala care, skill training, and direct support for essentials, SBB Foundation creates lasting transformation that inspires volunteers, donors, and communities to serve those in need.</p>
                 </div>
             </div>
         </section>
 
-        <section id="team" class="section">
-            <h2 data-i18n="teamTitle">Our Leadership & Team</h2>
+        <section class="section section-alt">
+            <div class="container">
+                <div class="section-title">
+                    <h2 data-i18n="whatWeDo">What We Do</h2>
+                </div>
+                <p class="section-lead" data-i18n="whatWeDoLead">Outcome-driven programs across gau seva, education, and women's empowerment.</p>
+                <div class="programs-grid">
+                    <article class="feature-card">
+                        <img src="images/event/Cow1.jpeg" alt="Cow adoption program">
+                        <div class="feature-card-body">
+                            <h3 data-i18n="adoptCow">Adopt a Cow</h3>
+                            <p data-i18n="cowCardDesc">Safe shelter, fodder, and veterinary care with monthly donor updates.</p>
+                            <a class="link-arrow" href="#programs" data-i18n="learnMore">Learn more</a>
+                        </div>
+                    </article>
+                    <article class="feature-card">
+                        <img src="images/event/Child.jpeg" alt="Child sponsorship program">
+                        <div class="feature-card-body">
+                            <h3 data-i18n="sponsorChild">Sponsor a Child</h3>
+                            <p data-i18n="childCardDesc">Education, meals, uniforms, and school support for children in need.</p>
+                            <a class="link-arrow" href="#programs" data-i18n="learnMore">Learn more</a>
+                        </div>
+                    </article>
+                    <article class="feature-card">
+                        <img src="images/event/shg.jpg" alt="Women empowerment program">
+                        <div class="feature-card-body">
+                            <h3 data-i18n="womenDesc">Women Empowerment</h3>
+                            <p data-i18n="womenCardDesc">Skill training, SHGs, and micro-enterprise support for women.</p>
+                            <a class="link-arrow" href="#programs" data-i18n="learnMore">Learn more</a>
+                        </div>
+                    </article>
+                    <article class="feature-card">
+                        <img src="images/event/event1.jpeg" alt="Humanitarian outreach">
+                        <div class="feature-card-body">
+                            <h3 data-i18n="humanitarianTitle">Humanitarian Outreach</h3>
+                            <p data-i18n="humanitarianDesc">Food, blankets, and essentials for vulnerable families.</p>
+                            <a class="link-arrow" href="#donate" data-i18n="learnMore">Learn more</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-dark impact-band">
+            <div class="container">
+                <div class="impact-intro">
+                    <h2 data-i18n="impactTitle">Impact Created With Your Support</h2>
+                    <p data-i18n="impactLead">Your generosity is helping us reach communities across Rajasthan.</p>
+                </div>
+                <div class="impact-grid">
+                    <div class="impact-stat">
+                        <h3>1,250+</h3>
+                        <p data-i18n="counters" data-i18n-item>Cows adopted</p>
+                    </div>
+                    <div class="impact-stat">
+                        <h3>620+</h3>
+                        <p data-i18n="counters" data-i18n-item>Children sponsored</p>
+                    </div>
+                    <div class="impact-stat">
+                        <h3>75k+</h3>
+                        <p data-i18n="counters" data-i18n-item>Meals served</p>
+                    </div>
+                    <div class="impact-stat">
+                        <h3>48</h3>
+                        <p data-i18n="counters" data-i18n-item>Projects completed</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="team" class="section section-alt">
+            <div class="container">
+            <div class="section-title">
+                <h2 data-i18n="teamTitle">Our Leadership & Team</h2>
+            </div>
             <p class="section-lead" data-i18n="teamLead">Committed to Gau Seva, Community Welfare & Sustainable Development</p>
 
             <h3 class="team-tier" data-i18n="tierChairman">Chairman</h3>
@@ -194,10 +282,14 @@
                 </article>
                 
             </div>
+            </div>
         </section>
 
         <section id="programs" class="section">
-            <h2 data-i18n="programsTitle">Programs</h2>
+            <div class="container">
+            <div class="section-title">
+                <h2 data-i18n="programsTitle">Programs</h2>
+            </div>
             <p class="section-lead">Cow Adoption · Child Sponsorship · Women Empowerment</p>
             <div class="programs">
                 <article class="card program">
@@ -239,13 +331,18 @@
                     </ul>
                 </article>
             </div>
+            </div>
         </section>
 
-        <section id="donate" class="section">
-            <div class="two-col">
-                <div class="card">
+        <section id="donate" class="section section-alt">
+            <div class="container">
+            <div class="section-title">
+                <h2 data-i18n="campaignsTitle">Ways to Contribute</h2>
+            </div>
+            <p class="section-lead" data-i18n="donateLead">Choose an amount, pay via UPI/QR or bank, and share proof for your receipt. <strong>80G tax benefits available.</strong></p>
+            <div class="campaign-grid two-col">
+                <div class="campaign-card">
                     <h2 data-i18n="donateTitle">Donation Plans</h2>
-                    <p class="section-lead" data-i18n="donateLead">Choose an amount, pay via UPI/QR or bank, and share proof for your receipt.</p>
                     <div class="tiers">
                         <span class="tier">₹501</span>
                         <span class="tier">₹1100</span>
@@ -263,7 +360,7 @@
                     </div>
                 
                 </div>
-                <div class="card">
+                <div class="campaign-card">
                     <h2 data-i18n="offlineTitle">Offline Donation</h2>
                     <p class="section-lead" data-i18n="offlineLead">Bank transfer / UPI accepted. Share payment proof to get your receipt.</p>
                     <ul class="list">
@@ -285,9 +382,11 @@
                     </div>
                 </div>
             </div>
+            </div>
         </section>
 
-        <section id="gaushala" class="section two-col">
+        <section id="gaushala" class="section">
+            <div class="container two-col">
             <div>
                 <h2 data-i18n="gaushalaTitle">Gaushala & Fieldwork</h2>
                 <p class="section-lead" data-i18n="gaushalaLead">Daily seva, vaccination, and fodder support at our gaushala. Visitors welcome by appointment.</p>
@@ -315,19 +414,27 @@
                 </div>
                 <p style="margin-top:10px; color:#4b5563;">Gaushala seva and care snapshots.</p>
             </div>
+            </div>
         </section>
 
-        <section id="gallery" class="section">
-            <h2>Gallery</h2>
+        <section id="gallery" class="section section-alt">
+            <div class="container">
+            <div class="section-title">
+                <h2>Gallery</h2>
+            </div>
             <p class="section-lead">Press coverage and field events from the SBB Foundation.</p>
             <h3 style="margin:10px 0;">Events</h3>
             <div class="gallery-grid" id="event-gallery"></div>
             <h3 style="margin:18px 0 10px;">Press</h3>
             <div class="gallery-grid" id="press-gallery"></div>
+            </div>
         </section>
 
         <section id="contact" class="section">
-            <h2 data-i18n="contactTitle">Contact & Help</h2>
+            <div class="container">
+            <div class="section-title">
+                <h2 data-i18n="contactTitle">Contact & Help</h2>
+            </div>
             <p class="section-lead" data-i18n="contactLead">Call/WhatsApp: +91 9166010400 · Email: jitendra.sharma@sbbf.in</p>
             <div class="two-col">
                 <div class="card">
@@ -365,10 +472,14 @@
                     </form>
                 </div>
             </div>
+            </div>
         </section>
 
-        <section id="news" class="section">
-            <h2 data-i18n="newsTitle">News & Updates</h2>
+        <section id="news" class="section section-alt">
+            <div class="container">
+            <div class="section-title">
+                <h2 data-i18n="newsTitle">News & Updates</h2>
+            </div>
             <p class="section-lead" data-i18n="newsLead">Press, success stories, and monthly impact digests.</p>
             <div class="programs">
                 <article class="card">
@@ -387,9 +498,11 @@
                     <a class="pill" href="press.html">See press clippings</a>
                 </article>
             </div>
+            </div>
         </section>
 
-        <section id="faq" class="section two-col">
+        <section id="faq" class="section">
+            <div class="container two-col">
             <div>
                 <h2 data-i18n="faqTitle">FAQ</h2>
                 <details class="card faq">
@@ -413,24 +526,61 @@
                     <a class="pill" href="admin-dashboard.html">Admin Panel</a>
                 </div>
             </div>
+            </div>
+        </section>
+
+        <section class="cta-band">
+            <div class="container">
+                <h2 data-i18n="ctaBandTitle">Be a Part of the Change</h2>
+                <p data-i18n="ctaBandLead">Join us in creating sustainable impact through meaningful collaboration and support.</p>
+                <div class="cta-row" style="justify-content:center;">
+                    <a class="pill secondary" href="#contact" data-i18n="volunteer">Volunteer</a>
+                    <a class="pill" href="#donate" data-i18n="donateNow">Contribute</a>
+                    <a class="pill" href="mailto:jitendra.sharma@sbbf.in" data-i18n="partnerCta">Partner With Us</a>
+                </div>
+            </div>
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="container two-col">
-            <div>
-                <strong>SBB Foundation</strong>
-                <p style="margin:6px 0;" data-i18n="footer">Transparency • Receipts • Monthly updates</p>
-                <p>Reg. No: 202503182112288 & Darpan id: RJ/2025/0912199 · Jaipur & Tonk, Rajasthan</p>
-            </div>
-            <div>
-                <h4 data-i18n="contactTitle">Contact & Help</h4>
-                <p data-i18n="contactLead">Call/WhatsApp: +91 9166010400 · Email: jitendra.sharma@sbbf.in</p>
-                <div class="cta-row" style="margin-top:8px;">
-                    <a class="pill" href="tel:+919166010400">Call</a>
-                    <a class="pill" href="https://wa.me/919166010400" target="_blank" rel="noreferrer">WhatsApp</a>
-                    <a class="pill" href="mailto:jitendra.sharma@sbbf.in">Email</a>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <strong style="color:#fff;font-size:1.1rem;">SBB Foundation</strong>
+                    <p data-i18n="footer">Transparency • Receipts • Monthly updates</p>
+                    <p>Reg. No: 202503182112288<br>Darpan ID: RJ/2025/0912199<br>Jaipur & Tonk, Rajasthan</p>
                 </div>
+                <div>
+                    <h4 data-i18n="programsTitle">Programs</h4>
+                    <ul>
+                        <li><a href="#programs" data-i18n="adoptCow">Adopt a Cow</a></li>
+                        <li><a href="#programs" data-i18n="sponsorChild">Sponsor a Child</a></li>
+                        <li><a href="#programs" data-i18n="womenDesc">Women Empowerment</a></li>
+                        <li><a href="#gaushala" data-i18n="gaushalaTitle">Gaushala</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 data-i18n="aboutNav">About</h4>
+                    <ul>
+                        <li><a href="#about" data-i18n="knowingLabel">Our Story</a></li>
+                        <li><a href="#team" data-i18n="teamTitle">Our Team</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#news" data-i18n="newsTitle">News</a></li>
+                        <li><a href="#faq" data-i18n="faqTitle">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 data-i18n="contactTitle">Contact</h4>
+                    <p style="font-size:0.9rem;margin-bottom:12px;" data-i18n="contactLead">Call/WhatsApp: +91 9166010400 · Email: jitendra.sharma@sbbf.in</p>
+                    <div class="cta-row">
+                        <a class="pill" href="tel:+919166010400">Call</a>
+                        <a class="pill" href="https://wa.me/919166010400" target="_blank" rel="noreferrer">WhatsApp</a>
+                        <a class="pill" href="mailto:jitendra.sharma@sbbf.in">Email</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Shree Banke Bihari Foundation. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
