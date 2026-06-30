@@ -214,10 +214,16 @@ header {
 .performer-photo {
     width: 120px;
     height: 120px;
+    min-width: 120px;
+    min-height: 120px;
+    max-width: 120px;
+    aspect-ratio: 1 / 1;
     border-radius: 50%;
     object-fit: cover;
+    object-position: center top;
     margin: 0 auto 12px;
     display: block;
+    flex-shrink: 0;
     box-shadow: var(--shadow);
     background: #fef3c7;
 }
@@ -252,6 +258,7 @@ header {
 .chairman-header .performer-photo {
     margin: 0;
     flex-shrink: 0;
+    align-self: center;
 }
 
 .chairman-header h4 {
@@ -430,6 +437,23 @@ header {
     }
     header {
         position: sticky;
+    }
+
+    .chairman-header {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .chairman-header > div {
+        flex: 1 1 100%;
+    }
+
+    .performer-photo {
+        width: 110px;
+        height: 110px;
+        min-width: 110px;
+        min-height: 110px;
+        max-width: 110px;
     }
 }
 
