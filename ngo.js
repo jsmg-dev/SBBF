@@ -62,10 +62,9 @@ const translations = {
         womenTier1: "₹11,000 / month: Foundational skill training and SHG onboarding + monthly progress updates",
         womenTier2: "₹51,000 / month: Advanced skills, digital education, seed capital, and market access + monthly photos/stories",
         womenTier3: "₹1,11,000 / month: Full empowerment package (business start, SHG support, market connections, financial guidance) + special reports/videos",
-        donationTiersLabel: "Donation tiers:",
         tiersLabel: "Popular plans",
         donateTitle: "Donation Plans",
-        donateLead: "Choose an amount, pay via UPI/QR or bank, and share proof for your receipt. 80G tax benefits available.",
+        donateLead: "Choose an amount, pay via UPI/QR or bank, and share proof for your receipt.",
         donateEssentialsLead: "SBB Foundation goes beyond education, cow adoption, and women empowerment. We also ensure basic necessities reach those in need.",
         donateEssentialsBlankets: "Blankets: Distributed during winters to keep vulnerable families warm.",
         donateEssentialsFood: "Food: Clean, nutritious meals for hungry individuals and needy families.",
@@ -86,41 +85,10 @@ const translations = {
     hi: {
         heroTitle: "गोमाता दत्तक • बाल शिक्षा • जनकल्याण — आज ही जुड़ें।",
         heroLead: "राजस्थान में गौसेवा, बाल शिक्षा और महिला सशक्तिकरण के लिए पारदर्शी सेवा। प्रत्येक दान पर रसीद और मासिक अपडेट।",
-        donateNow: "दान करें",
+        donateNow: "Donate Now — दान करें",
         adoptCow: "गोमाता दत्तक",
         sponsorChild: "बाल शिक्षा प्रायोजन",
         volunteer: "स्वयंसेवक बनें",
-        aboutNav: "हमारे बारे में",
-        donateNav: "दान करें",
-        knowingLabel: "जानिए",
-        knowingName: "SBB",
-        aboutP1: "श्री बांके बिहारी फाउंडेशन राजस्थान स्थित एक पंजीकृत गैर-लाभकारी संस्था है, जो गौ सेवा, बाल शिक्षा प्रायोजन, महिला सशक्तिकरण और मानवीय सेवा के माध्यम से सार्थक परिवर्तन लाने का कार्य करती है। प्रावधिक 12A, 80G और Darpan पंजीकरण के साथ पारदर्शिता और जवाबदेही सुनिश्चित है।",
-        aboutP2: "हम गौ कल्याण, शिक्षा, आजीविका और समुदाय विकास में संरचित कार्यक्रम चलाते हैं — प्रत्येक जमीनी स्तर की जरूरतों पर आधारित और दीर्घकालिक प्रभाव के लिए बनाया गया।",
-        aboutP3: "भोजन वितरण, गौशाला सेवा, कौशल प्रशिक्षण और आवश्यक सामग्री के माध्यम से SBB फाउंडेशन स्थायी परिवर्तन लाता है और स्वयंसेवकों, दानदाताओं और समुदायों को सेवा के लिए प्रेरित करता है।",
-        whatWeDo: "हम क्या करते हैं",
-        whatWeDoLead: "गौ सेवा, शिक्षा और महिला सशक्तिकरण में परिणाम-आधारित कार्यक्रम।",
-        cowCardDesc: "सुरक्षित आश्रय, चारा और पशु चिकित्सा — मासिक दानदाता अपडेट सहित।",
-        childCardDesc: "जरूरतमंद बच्चों के लिए शिक्षा, भोजन, यूनिफॉर्म और स्कूल सहायता।",
-        womenCardDesc: "महिलाओं के लिए कौशल प्रशिक्षण, SHG और सूक्ष्म उद्यम सहायता।",
-        humanitarianTitle: "मानवीय सेवा",
-        humanitarianDesc: "कमजोर परिवारों के लिए भोजन, कंबल और आवश्यक सामग्री।",
-        learnMore: "और जानें",
-        impactTitle: "आपके सहयोग से बना प्रभाव",
-        impactLead: "आपकी उदारता राजस्थान भर के समुदायों तक पहुँच रही है।",
-        slide1Title: "गौ सेवा और करुणामय देखभाल",
-        slide1Lead: "राजस्थान में घायल, परित्यक्त और जरूरतमंद पशुओं के लिए आधुनिक गौशाला और गौ अस्पताल का निर्माण।",
-        slide2Title: "गोमाता दत्तक — सेवा भाव से जुड़ें",
-        slide2Lead: "सुरक्षित आश्रय, पौष्टिक चारा और पशु चिकित्सा — हर दानदाता को मासिक फोटो अपडेट।",
-        slide3Title: "आज के शिक्षार्थी, कल के नेता",
-        slide3Lead: "बच्चे की शिक्षा, पोषण और सुरक्षित सीखने का माहौल — नियमित प्रगति अपडेट सहित।",
-        slide4Title: "सशक्त महिलाएँ, मजबूत समुदाय",
-        slide4Lead: "कौशल प्रशिक्षण, SHG गठन और महिलाओं की आर्थिक स्वावलंबन के लिए आजीविका सहायता।",
-        slide5Title: "मानवता की सेवा, एक भोजन एक समय",
-        slide5Lead: "भोजन वितरण, कंबल और जरूरतमंद परिवारों तक आवश्यक सामग्री।",
-        campaignsTitle: "दान के तरीके",
-        ctaBandTitle: "परिवर्तन का हिस्सा बनें",
-        ctaBandLead: "सार्थक सहयोग और सहभागिता के माध्यम से स्थायी प्रभाव बनाने में हमारे साथ जुड़ें।",
-        partnerCta: "साझेदारी करें",
         counters: ["गोद ली गई गायें", "प्रायोजित बच्चे", "सेवे गए भोजन", "पूरित प्रोजेक्ट"],
         aboutTitle: "क्यों चुनें SBB फाउंडेशन",
         aboutLead: "पंजीकृत NGO (Reg. No: 202501182014600) — सत्यापित लाभार्थी, हर दान पर रसीद, मासिक रिपोर्ट।",
@@ -149,7 +117,7 @@ const translations = {
         donationTiersLabel: "दान श्रेणियाँ:",
         tiersLabel: "लोकप्रिय योजनाएं",
         donateTitle: "दान योजनाएं",
-        donateLead: "राशि चुनें, UPI/QR या बैंक से भुगतान करें, प्रमाण साझा करें और रसीद प्राप्त करें। 80G कर-छूट उपलब्ध।",
+        donateLead: "राशि चुनें, UPI/QR या बैंक से भुगतान करें, प्रमाण साझा करें और रसीद प्राप्त करें।",
         donateEssentialsLead: "SBB Foundation शिक्षा, गो सेवा और महिला सशक्तिकरण से आगे बढ़कर जरूरतमंदों तक आवश्यक वस्तुएँ भी पहुँचाता है।",
         donateEssentialsBlankets: "कंबल: सर्दियों में जरूरतमंद परिवारों को ऊष्मा के लिए वितरित।",
         donateEssentialsFood: "भोजन: भूखे व्यक्तियों और गरीब परिवारों को स्वच्छ, पौष्टिक भोजन।",
@@ -261,23 +229,6 @@ document.addEventListener('DOMContentLoaded', () => {
         langBtn.textContent = next === 'en' ? 'EN' : 'हिंदी';
     });
 
-    // Mobile nav
-    const navToggle = document.getElementById('nav-toggle');
-    const navLinks = document.getElementById('nav-links');
-    navToggle?.addEventListener('click', () => {
-        const open = navLinks?.classList.toggle('open');
-        navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    navLinks?.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('open');
-            navToggle?.setAttribute('aria-expanded', 'false');
-        });
-    });
-
-    // Hero slider
-    initHeroSlider();
-
     // Scroll to target for CTA buttons
     document.querySelectorAll('[data-scroll]').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -292,50 +243,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setLanguage('en');
 });
-
-function initHeroSlider() {
-    const slides = document.querySelectorAll('.hero-slide');
-    const dotsContainer = document.getElementById('hero-dots');
-    if (!slides.length || !dotsContainer) return;
-
-    let current = 0;
-    let timer;
-
-    slides.forEach((_, i) => {
-        const dot = document.createElement('button');
-        dot.type = 'button';
-        dot.setAttribute('aria-label', `Slide ${i + 1}`);
-        if (i === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => goTo(i));
-        dotsContainer.appendChild(dot);
-    });
-
-    const dots = dotsContainer.querySelectorAll('button');
-
-    function goTo(index) {
-        slides[current].classList.remove('active');
-        dots[current]?.classList.remove('active');
-        current = (index + slides.length) % slides.length;
-        slides[current].classList.add('active');
-        dots[current]?.classList.add('active');
-    }
-
-    function next() {
-        goTo(current + 1);
-    }
-
-    function start() {
-        timer = setInterval(next, 5500);
-    }
-
-    function reset() {
-        clearInterval(timer);
-        start();
-    }
-
-    dotsContainer.addEventListener('click', reset);
-    start();
-}
 
 function renderGallery(containerId, images, label) {
     const container = document.getElementById(containerId);
