@@ -143,7 +143,7 @@ const eventImages = Array.from({ length: 148 }, (_, i) => `images/event/event${i
 	// ➕ Add your new photos here
 eventImages.unshift(
     "images/event/H1.PNG",
-    "images/event/H2.PNG",
+    "images/event/H2.png",
     "images/event/H3.JPG",
     "images/event/H4.JPG",
     "images/event/H5.JPG",
