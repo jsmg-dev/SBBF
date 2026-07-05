@@ -195,7 +195,7 @@ eventImages.unshift(
 	"images/event/K5.jpeg",
 	"images/event/K6.jpeg",
 	"images/event/event71.jpeg",
-	"images/event/event72.jpeg",
+	"images/event/event72.PNG",
 	"images/event/event73.jpeg",
 	"images/event/event74.jpeg",
 	"images/event/event75.jpeg"
