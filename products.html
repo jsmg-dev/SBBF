@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products | SBB Foundation</title>
+<meta name="description" content="SBB Foundation products including Rudhraksh, spiritual products, Gau Mutra, herbal products and wellness items.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Noto+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="ngo.css">
+<style>
+:root{--gold:#c99a3a;--deep:#0a4d3a;--maroon:#6b1f1f;--cream:#fffaf0}
+body{background:linear-gradient(180deg,#f8fbf9 0%,#fffdf7 100%)}
+.products-hero{position:relative;overflow:hidden;background:radial-gradient(circle at 80% 20%,rgba(201,154,58,.22),transparent 34%),linear-gradient(135deg,#083d2f,#0f6b52);color:#fff;padding:90px 0 80px}
+.products-hero:after{content:"";position:absolute;inset:auto -10% -120px auto;width:420px;height:260px;background:rgba(201,154,58,.12);border-radius:50%;filter:blur(8px)}
+.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.35fr .65fr;gap:40px;align-items:center}
+.eyebrow{letter-spacing:.16em;text-transform:uppercase;font-size:.78rem;font-weight:800;color:#f2d48a;margin-bottom:14px}
+.products-hero h1{font-family:"Playfair Display",serif;font-size:clamp(2.5rem,5vw,4.8rem);line-height:1.05;margin:0 0 18px}
+.products-hero p{max-width:720px;font-size:1.08rem;color:#eaf6f0}
+.hero-badge{justify-self:end;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.24);padding:24px;border-radius:24px;backdrop-filter:blur(10px);text-align:center}
+.hero-badge strong{display:block;font-size:2.4rem;color:#f2d48a;font-family:"Playfair Display",serif}
+.hero-badge span{display:block;margin-top:5px;color:#fff}
+.sale-strip{background:linear-gradient(90deg,#7a241e,#a84d25,#7a241e);color:#fff;padding:14px 0;text-align:center;font-weight:800;letter-spacing:.04em}
+.sale-strip span{color:#ffe39b}
+.product-section{padding:72px 0}
+.section-head{text-align:center;max-width:780px;margin:0 auto 36px}
+.section-head .eyebrow{color:var(--deep);margin-bottom:8px}
+.section-head h2{font-family:"Playfair Display",serif;font-size:clamp(2rem,4vw,3.2rem);color:#173b2d;margin-bottom:10px}
+.section-head p{color:#64748b}
+.category-title{display:flex;align-items:center;gap:14px;margin:42px 0 20px;color:#173b2d}
+.category-title:after{content:"";height:1px;background:#e6d5ad;flex:1}
+.category-title h3{font-size:1.35rem;white-space:nowrap}
+.product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.product-card{background:#fff;border:1px solid #eadfca;border-radius:20px;overflow:hidden;box-shadow:0 12px 35px rgba(22,54,39,.07);transition:transform .25s ease,box-shadow .25s ease;position:relative}
+.product-card:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(22,54,39,.13)}
+.product-img{height:230px;background:#f7f3e9;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.product-img img{width:100%;height:100%;object-fit:cover}
+.product-card.rudhra .product-img img{object-fit:contain;padding:12px}
+.product-body{padding:18px}
+.product-body h4{font-size:1.05rem;color:#173b2d;margin:0 0 6px}
+.product-body p{font-size:.88rem;color:#6b7280;min-height:42px;margin-bottom:12px}
+.price-row{display:flex;align-items:end;gap:9px;flex-wrap:wrap}
+.mrp{text-decoration:line-through;color:#9ca3af;font-size:.86rem}
+.sale-price{font-size:1.3rem;font-weight:800;color:#7a241e}
+.sale-tag{position:absolute;top:12px;left:12px;background:#b32121;color:#fff;padding:6px 10px;border-radius:999px;font-size:.72rem;font-weight:800;z-index:2;box-shadow:0 4px 12px rgba(0,0,0,.18)}
+.buy-btn{display:block;text-align:center;margin-top:14px;padding:10px 14px;border-radius:10px;background:#0f6b52;color:#fff;font-weight:800}
+.rudhra-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.rudhra .product-body{padding:15px}
+.rudhra .product-img{height:205px}
+.sale-note{background:#fff8e6;border:1px solid #efd79d;border-radius:18px;padding:18px 20px;margin:0 auto 28px;max-width:950px;text-align:center;color:#684c18}
+.project-banner{margin:42px 0;border-radius:24px;overflow:hidden;box-shadow:0 16px 45px rgba(0,0,0,.1);position:relative}
+.project-banner img{width:100%;max-height:560px;object-fit:cover}
+.project-overlay{position:absolute;left:0;right:0;bottom:0;padding:38px 28px 24px;background:linear-gradient(transparent,rgba(0,0,0,.78));color:#fff}
+.project-overlay h3{font-family:"Playfair Display",serif;font-size:2rem;margin:0}
+.footer-note{background:#0a4d3a;color:#dcefe7;text-align:center;padding:28px 20px}
+.footer-note strong{color:#f2d48a}
+@media(max-width:1000px){.product-grid,.rudhra-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero-inner{grid-template-columns:1fr}.hero-badge{justify-self:start}}
+@media(max-width:700px){.products-hero{padding:64px 0}.product-grid,.rudhra-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.product-img{height:210px}.category-title{margin-top:32px}.category-title h3{font-size:1.1rem}.project-overlay{position:static;background:#0a4d3a}}
+@media(max-width:480px){.product-grid,.rudhra-grid{grid-template-columns:1fr}.product-img{height:245px}.products-hero h1{font-size:2.5rem}}
+
+.site-header .nav-links a[aria-current="page"]{
+    color:#0f6b52;
+    font-weight:800;
+}
+@media(max-width:900px){
+    .site-header .nav-links a[aria-current="page"]{
+        background:rgba(15,107,82,.08);
+        border-radius:10px;
+    }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+        <div class="container nav">
+            <a class="brand" href="index.html#top">
+                <img src="logo.jpeg" alt="SBB Foundation logo">
+                <span>SBB Foundation</span>
+            </a>
+            <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="nav-links" id="nav-links">
+                <a href="index.html#about" data-i18n="aboutNav">About</a>
+                <a href="index.html#team" data-i18n="teamTitle">Our Team</a>
+                <a href="index.html#programs" data-i18n="programsTitle">Programs</a>
+                <a href="products.html" aria-current="page">Products</a>
+                <a href="index.html#donate" data-i18n="donateNav">Contribute</a>
+                <a href="index.html#gaushala" data-i18n="gaushalaTitle">Gaushala</a>
+                <a href="index.html#gallery">Gallery</a>
+                <a href="index.html#news" data-i18n="newsTitle">News</a>
+                <a href="index.html#contact" data-i18n="contactTitle">Contact</a>
+            </nav>
+            <div class="actions">
+                <button id="lang-toggle" class="pill lang-toggle" aria-label="Toggle language">EN</button>
+                <a class="pill secondary" href="index.html#donate" data-i18n="donateNow">Contribute</a>
+            </div>
+        </div>
+    </header>
+
+<section class="products-hero">
+<div class="container hero-inner">
+<div>
+<div class="eyebrow">SBB Foundation • Products</div>
+<h1>Products With a Purpose</h1>
+<p>Spiritual, wellness and Gau Seva products offered by SBB Foundation. The product initiative is presented as a way to support the Foundation's Gau Seva Hospital and community work.</p>
+</div>
+<div class="hero-badge"><strong>1–11</strong><span>Mukhi Rudhraksh<br>Special Sale Collection</span></div>
+</div>
+</section>
+<div class="sale-strip">SPECIAL <span>RUDHRAKSH SALE</span> • 1 MUKHI TO 11 MUKHI</div>
+
+<main class="product-section">
+<div class="container">
+<div class="section-head"><div class="eyebrow">Shop / Support</div><h2>Our Product Collection</h2><p>Prices below are editable sample website prices. Replace them with your final MRP and sale prices before publishing.</p></div>
+
+<div class="sale-note"><strong>हर खरीद में सेवा का संकल्प</strong><br>Product pricing can be updated easily in this page. Keep your final approved price list here before going live.</div>
+
+<div class="category-title"><h3>🔥 Rudhraksh Special Sale — 1 Mukhi to 11 Mukhi</h3></div>
+<div class="product-grid rudhra-grid">
+<!-- Rudhraksh sale cards -->
+<div class="product-card rudhra"><span class="sale-tag">SALE</span><div class="product-img"><img src="images/products/rudhraksh-mala.jpg" alt="1 Mukhi Rudhraksh"></div><div class="product-body"><h4>1 Mukhi Rudhraksh</h4><p>Premium Rudhraksh • Sale collection</p><div class="price-row"><span class="mrp">₹4,999</span><span class="sale-price">₹2,999</span></div><a class="buy-btn" href="index.html#contact">Enquire</a></div></div>
+<div class="product-card rudhra"><span class="sale-tag">SALE</span><div class="product-img"><img src="images/products/rudhraksh-mala.jpg" alt="2 Mukhi Rudhraksh"></div><div class="product-body"><h4>2 Mukhi Rudhraksh</h4><p>Premium Rudhraksh • Sale collection</p><div class="price-row"><span class="mrp">₹3,499</span><span class="sale-price">₹1,999</span></div><a class="buy-btn" href="index.html#contact">Enquire</a></div></div>
+<div class="product-card rudhra"><span class="sale-tag">SALE</span><div class="product-img"><img src="images/products/rudhraksh-mala.jpg" alt="3 Mukhi Rudhraksh"></div><div class="product-body"><h4>3 Mukhi Rudhraksh</h4><p>Premium Rudhraksh • Sale collection</p><div class="price-row"><span class="mrp">₹2,999</span><span class="sale-price">₹1,799</span></div><a class="buy-btn" href="index.html#contact">Enquire</a></div></div>
+<div class="product-card rudhra"><span class="sale-tag">SALE</span><div class="product-img"><img src="images/products/rudhraksh-mala.jpg" alt="4 Mukhi Rudhraksh"></div><div class="product-body"><h4>4 Mukhi Rudhraksh</h4><p>Premium Rudhraksh • Sale collection</p><div class="price-row"><span class="mrp">₹2,499</span><span class="sale-price">₹1,499</span></div><a class="buy-btn" href="index.html#contact">Enquire</a></div></div>
+<div class="product-card rudhra"><span class="sale-tag">SALE</span><div class="product-img"><img src="images/products/rudhraksh-mala.jpg" alt="5 Mukhi Rudhraksh"></div><div class="product-body"><h4>5 Mukhi Rudhraksh</h4><p>Popular Rudhraksh • Sale collection</p><div class="price-row"><span class="mrp">₹1,499</span><span class="sale-price">₹799</span></div><a class="buy-btn" href="index.html#contact">Enquire</a></div></div>
+<div class="product-card rudhra"><span class="sale-tag">SALE</span><div class="product-img"><img src="images/products/rudhraksh-mala.jpg" alt="6 Mukhi Rudhraksh"></div><div class="product-body"><h4>6 Mukhi Rudhraksh</h4><p>Premium Rudhraksh • Sale collection</p><div class="price-row"><span class="mrp">₹2,499</span><span class="sale-price">₹1,499</span></div><a class="buy-btn" href="index.html#contact">Enquire</a></div></div>
+<div class="product-card rudhra"><span class="sale-tag">SALE</span><div class="product-img"><img src="images/products/rudhraksh-mala.jpg" alt="7 Mukhi Rudhraksh"></div><div class="product-body"><h4>7 Mukhi Rudhraksh</h4><p>Premium Rudhraksh • Sale collection</p><div class="price-row"><span class="mrp">₹2,999</span><span class="sale-price">₹1,799</span></div><a class="buy-btn" href="index.html#contact">Enquire</a></div></div>
+<div class="product-card rudhra"><span class="sale-tag">SALE</span><div class="product-img"><img src="images/products/rudhraksh-mala.jpg" alt="8 Mukhi Rudhraksh"></div><div class="product-body"><h4>8 Mukhi Rudhraksh</h4><p>Premium Rudhraksh • Sale collection</p><div class="price-row"><span class="mrp">₹3,499</span><span class="sale-price">₹2,199</span></div><a class="buy-btn" href="index.html#contact">Enquire</a></div></div>
+<div class="product-card rudhra"><span class="sale-tag">SALE</span><div class="product-img"><img src="images/products/rudhraksh-mala.jpg" alt="9 Mukhi Rudhraksh"></div><div class="product-body"><h4>9 Mukhi Rudhraksh</h4><p>Premium Rudhraksh • Sale collection</p><div class="price-row"><span class="mrp">₹4,499</span><span class="sale-price">₹2,799</span></div><a class="buy-btn" href="index.html#contact">Enquire</a></div></div>
+<div class="product-card rudhra"><span class="sale-tag">SALE</span><div class="product-img"><img src="images/products/rudhraksh-mala.jpg" alt="10 Mukhi Rudhraksh"></div><div class="product-body"><h4>10 Mukhi Rudhraksh</h4><p>Premium Rudhraksh • Sale collection</p><div class="price-row"><span class="mrp">₹5,499</span><span class="sale-price">₹3,499</span></div><a class="buy-btn" href="index.html#contact">Enquire</a></div></div>
+<div class="product-card rudhra"><span class="sale-tag">SALE</span><div class="product-img"><img src="images/products/rudhraksh-mala.jpg" alt="11 Mukhi Rudhraksh"></div><div class="product-body"><h4>11 Mukhi Rudhraksh</h4><p>Premium Rudhraksh • Sale collection</p><div class="price-row"><span class="mrp">₹6,999</span><span class="sale-price">₹4,499</span></div><a class="buy-btn" href="index.html#contact">Enquire</a></div></div>
+</div>
+
+<div class="category-title"><h3>Rudhraksh & Spiritual Products</h3></div>
+<div class="product-grid">
+<div class="product-card"><div class="product-img"><img src="images/products/rudhraksh-bracelet.jpg" alt="Rudhraksh bracelet"></div><div class="product-body"><h4>Rudhraksh Bracelet</h4><p>Rudhraksh bracelet collection.</p><div class="price-row"><span class="mrp">₹1,499</span><span class="sale-price">₹999</span></div><a class="buy-btn" href="index.html#contact">Enquire</a></div></div>
+<div class="product-card"><div class="product-img"><img src="images/products/rudhraksh-mala.jpg" alt="Rudhraksh Mala"></div><div class="product-body"><h4>Rudhraksh Mala</h4><p>Traditional Rudhraksh Mala.</p><div class="price-row"><span class="mrp">₹1,999</span><span class="sale-price">₹1,299</span></div><a class="buy-btn" href="index.html#contact">Enquire</a></div></div>
+<div class="product-card"><div class="product-img"><img src="images/products/chakra-bracelet.jpg" alt="Seven Chakra Bracelet"></div><div class="product-body"><h4>7 Chakra Bracelet</h4><p>Multi-colour spiritual bracelet.</p><div class="price-row"><span class="mrp">₹1,499</span><span class="sale-price">₹899</span></div><a class="buy-btn" href="index.html#contact">Enquire</a></div></div>
+<div class="product-card"><div class="product-img"><img src="images/products/pyrite.jpg" alt="Natural Pyrite"></div><div class="product-body"><h4>Natural Pyrite</h4><p>Pyrite stone / spiritual collection.</p><div class="price-row"><span class="mrp">₹1,999</span><span class="sale-price">₹1,299</span></div><a class="buy-btn" href="index.html#contact">Enquire</a></div></div>
+<div class="product-card"><div class="product-img"><img src="images/products/kuber-stone.jpg" alt="Kuber Stone"></div><div class="product-body"><h4>Kuber Stone</h4><p>Natural Kuber Stone collection.</p><div class="price-row"><span class="mrp">₹2,499</span><span class="sale-price">₹1,499</span></div><a class="buy-btn" href="index.html#contact">Enquire</a></div></div>
+</div>
+
+<div class="category-title"><h3>Gau Seva Products</h3></div>
+<div class="product-grid">
+<div class="product-card"><div class="product-img"><img src="images/products/gau-mutra-1.jpg" alt="Gau Mutra bottles"></div><div class="product-body"><h4>Gau Mutra</h4><p>Foundation product for Gau Seva initiative.</p><div class="price-row"><span class="mrp">₹299</span><span class="sale-price">₹199</span></div><a class="buy-btn" href="index.html#contact">Enquire</a></div></div>
+<div class="product-card"><div class="product-img"><img src="images/products/gau-mutra-2.jpg" alt="Gau Mutra bottles"></div><div class="product-body"><h4>Gau Mutra — Value Pack</h4><p>Multiple-bottle product collection.</p><div class="price-row"><span class="mrp">₹599</span><span class="sale-price">₹399</span></div><a class="buy-btn" href="index.html#contact">Enquire</a></div></div>
+</div>
+
+<div class="category-title"><h3>Herbal Wellness</h3></div>
+<div class="product-grid">
+<div class="product-card"><div class="product-img"><img src="images/products/trimtox.jpg" alt="Trim Tox Herbal Powder"></div><div class="product-body"><h4>Trim Tox Herbal Powder</h4><p>Herbal powder product shown in the supplied product artwork.</p><div class="price-row"><span class="mrp">₹999</span><span class="sale-price">₹699</span></div><a class="buy-btn" href="index.html#contact">Enquire</a></div></div>
+</div>
+
+<div class="project-banner">
+<img src="images/products/gau-seva-project.jpg" alt="SBB Foundation Gau Seva Hospital and Gaushala project">
+<div class="project-overlay"><h3>Every Purchase Can Support Gau Seva</h3><p>Product initiative aligned with the Foundation's Gau Seva Hospital and Gaushala vision.</p></div>
+</div>
+</div>
+</main>
+<div class="footer-note">SBB Foundation • <strong>Gau Seva • Community Welfare • Sustainable Service</strong></div>
+
+<script>
+const toggle=document.getElementById('nav-toggle'),nav=document.getElementById('nav-links');
+if(toggle){toggle.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')==='true';toggle.setAttribute('aria-expanded',String(!open));nav.classList.toggle('open',!open);});}
+document.querySelectorAll('#nav-links a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');toggle?.setAttribute('aria-expanded','false');}));
+</script>
+</body>
+</html>
