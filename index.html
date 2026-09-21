@@ -10,6 +10,35 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="ngo.css">
+<style>
+/* Trim Tox launch ad */
+.trimtox-ad-backdrop{position:fixed;inset:0;background:rgba(7,27,18,.72);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);z-index:99990;display:flex;align-items:center;justify-content:center;padding:18px;opacity:0;visibility:hidden;transition:opacity .28s ease,visibility .28s ease;}
+.trimtox-ad-backdrop.show{opacity:1;visibility:visible;}
+.trimtox-ad{position:relative;width:min(940px,96vw);max-height:94vh;overflow:auto;background:#fffaf0;border:1px solid rgba(201,154,58,.45);border-radius:22px;box-shadow:0 30px 90px rgba(0,0,0,.38);transform:translateY(18px) scale(.97);transition:transform .28s ease;}
+.trimtox-ad-backdrop.show .trimtox-ad{transform:translateY(0) scale(1);}
+.trimtox-ad img{display:block;width:100%;height:auto;max-height:78vh;object-fit:contain;background:#f7f3e9;}
+.trimtox-ad-close{position:absolute;top:10px;right:10px;width:42px;height:42px;border:0;border-radius:50%;background:rgba(0,0,0,.68);color:#fff;font-size:25px;line-height:1;cursor:pointer;z-index:2;display:grid;place-items:center;}
+.trimtox-ad-close:hover{background:#0a4d3a;}
+.trimtox-ad-footer{display:flex;align-items:center;justify-content:center;gap:12px;padding:14px 16px 17px;flex-wrap:wrap;}
+.trimtox-ad-footer a,.trimtox-ad-footer button{border:0;text-decoration:none;cursor:pointer;font:800 15px/1 Noto Sans,sans-serif;padding:12px 20px;border-radius:999px;}
+.trimtox-ad-shop{background:#0f6b52;color:#fff;}
+.trimtox-ad-skip{background:#eee8dc;color:#173b2d;}
+@media(max-width:600px){.trimtox-ad-backdrop{padding:10px;}.trimtox-ad{width:100%;border-radius:16px;}.trimtox-ad img{max-height:72vh;}.trimtox-ad-close{width:36px;height:36px;font-size:21px;top:7px;right:7px}.trimtox-ad-footer{padding:10px 12px 13px;gap:8px}.trimtox-ad-footer a,.trimtox-ad-footer button{font-size:13px;padding:11px 16px;}}
+</style>
+
+<style id="trimtox-moving-ad-css">
+.trimtox-moving-ad{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);width:min(980px,calc(100vw - 28px));z-index:100001;border:1px solid rgba(255,224,148,.65);border-radius:18px;overflow:hidden;background:linear-gradient(105deg,#063d2d,#0b5f45 45%,#174f39);box-shadow:0 18px 55px rgba(0,0,0,.28);animation:trimtoxAdIn .65s cubic-bezier(.2,.8,.2,1) both}
+.trimtox-moving-ad::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.13),transparent);transform:translateX(-110%);animation:trimtoxShine 4s linear infinite;pointer-events:none}
+.trimtox-ad-track{display:flex;align-items:center;gap:14px;min-height:86px;padding:10px 16px}
+.trimtox-ad-img{width:70px;height:70px;flex:0 0 70px;border-radius:12px;object-fit:cover;background:#f7f3e9;border:2px solid #f5d98a}
+.trimtox-ad-copy{min-width:0;flex:1;color:#fff}.trimtox-ad-copy strong{display:block;font-size:1.05rem;line-height:1.2;color:#ffe39b}.trimtox-ad-copy span{display:block;margin-top:4px;font-size:.84rem;color:#e8f5ee;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.trimtox-ad-marquee{position:relative;overflow:hidden;margin-top:6px;white-space:nowrap}.trimtox-ad-marquee span{display:inline-block;padding-right:60px;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#d9f2e5;animation:trimtoxMarquee 12s linear infinite}
+.trimtox-ad-btn{flex:0 0 auto;text-decoration:none!important;background:#f2d48a;color:#173b2d!important;font-weight:900;padding:11px 17px;border-radius:999px;white-space:nowrap;box-shadow:0 6px 18px rgba(0,0,0,.18);transition:transform .2s ease,background .2s ease}.trimtox-ad-btn:hover{transform:translateY(-2px);background:#fff0bc}
+.trimtox-ad-close{position:absolute;right:7px;top:5px;width:25px;height:25px;border:0;border-radius:50%;background:rgba(0,0,0,.22);color:#fff;cursor:pointer;font-size:15px;line-height:25px;padding:0;z-index:2}
+@keyframes trimtoxAdIn{from{opacity:0;transform:translate(-50%,24px)}to{opacity:1;transform:translate(-50%,0)}}@keyframes trimtoxShine{to{transform:translateX(110%)}}@keyframes trimtoxMarquee{from{transform:translateX(0)}to{transform:translateX(-100%)}}
+@media(max-width:600px){.trimtox-moving-ad{bottom:10px;width:calc(100vw - 16px);border-radius:15px}.trimtox-ad-track{min-height:72px;padding:8px 10px;gap:9px}.trimtox-ad-img{width:54px;height:54px;flex-basis:54px}.trimtox-ad-copy strong{font-size:.88rem}.trimtox-ad-copy span{font-size:.72rem}.trimtox-ad-marquee span{font-size:.61rem}.trimtox-ad-btn{padding:9px 11px;font-size:.72rem}}
+@media(prefers-reduced-motion:reduce){.trimtox-moving-ad,.trimtox-moving-ad::before,.trimtox-ad-marquee span{animation:none}}
+</style>
 </head>
 <body>
     <header class="site-header">
@@ -599,7 +628,50 @@
         </div>
     </footer>
 
+
+    <!-- Trim Tox promotional popup: shown to every visitor when the homepage opens -->
+    <div class="trimtox-ad-backdrop" id="trimtox-ad" role="dialog" aria-modal="true" aria-label="Trim Tox Herbal Powder promotion">
+        <div class="trimtox-ad" role="document">
+            <button class="trimtox-ad-close" id="trimtox-ad-close" type="button" aria-label="Close advertisement">&times;</button>
+            <img src="images/products/trimtox.jpg" alt="Trim Tox Herbal Powder promotional advertisement">
+            <div class="trimtox-ad-footer">
+                <a class="trimtox-ad-shop" href="products.html">View Trim Tox Product</a>
+                <button class="trimtox-ad-skip" id="trimtox-ad-skip" type="button">Continue to Website</button>
+            </div>
+        </div>
+    </div>
+
     <script src="ngo.js" defer></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function(){
+        const ad=document.getElementById("trimtox-ad");
+        const close=()=>{ ad.classList.remove("show"); document.body.style.overflow=""; };
+        ad.classList.add("show");
+        document.body.style.overflow="hidden";
+        document.getElementById("trimtox-ad-close").addEventListener("click", close);
+        document.getElementById("trimtox-ad-skip").addEventListener("click", close);
+        ad.addEventListener("click", function(e){ if(e.target===ad) close(); });
+        document.addEventListener("keydown", function(e){ if(e.key==="Escape") close(); });
+      });
+    </script>
+
+<!-- Trim Tox floating moving advertisement -->
+<div class="trimtox-moving-ad" id="trimtox-moving-ad" aria-label="Trim Tox Herbal Powder advertisement">
+  <button class="trimtox-ad-close" id="trimtox-moving-ad-close" type="button" aria-label="Close Trim Tox advertisement">×</button>
+  <div class="trimtox-ad-track">
+    <img class="trimtox-ad-img" src="images/products/trimtox.jpg" alt="Trim Tox Herbal Powder">
+    <div class="trimtox-ad-copy">
+      <strong>🌿 Trim Tox Herbal Powder</strong>
+      <span>Herbal wellness product • Special price ₹699</span>
+      <div class="trimtox-ad-marquee"><span>100% Natural • Herbal Formula • Supports Healthy Digestion • Gau Seva Initiative • &nbsp;</span><span aria-hidden="true">100% Natural • Herbal Formula • Supports Healthy Digestion • Gau Seva Initiative • &nbsp;</span></div>
+    </div>
+    <a class="trimtox-ad-btn" href="products.html#trim-tox-product">View Product →</a>
+  </div>
+</div>
+<script>
+(function(){const ad=document.getElementById('trimtox-moving-ad');const close=document.getElementById('trimtox-moving-ad-close');close?.addEventListener('click',()=>ad?.remove());})();
+</script>
+
 </body>
 </html>
 
