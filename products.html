@@ -161,10 +161,6 @@ body{background:linear-gradient(180deg,#f8fbf9 0%,#fffdf7 100%)}
 </main>
 <div class="footer-note">SBB Foundation • <strong>Gau Seva • Community Welfare • Sustainable Service</strong></div>
 
-<script>
-const toggle=document.getElementById('nav-toggle'),nav=document.getElementById('nav-links');
-if(toggle){toggle.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')==='true';toggle.setAttribute('aria-expanded',String(!open));nav.classList.toggle('open',!open);});}
-document.querySelectorAll('#nav-links a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');toggle?.setAttribute('aria-expanded','false');}));
-</script>
+<script src="ngo.js" defer></script>
 </body>
 </html>

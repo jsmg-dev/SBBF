@@ -219,7 +219,49 @@ function setLanguage(lang) {
     document.documentElement.lang = lang === 'hi' ? 'hi' : 'en';
 }
 
+function initMobileNav() {
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('nav-links');
+    if (!toggle || !nav) return;
+
+    toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const open = toggle.getAttribute('aria-expanded') === 'true';
+        const next = !open;
+        toggle.setAttribute('aria-expanded', String(next));
+        nav.classList.toggle('open', next);
+        toggle.setAttribute('aria-label', next ? 'Close menu' : 'Open menu');
+    });
+
+    nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            nav.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.setAttribute('aria-label', 'Open menu');
+        });
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!nav.classList.contains('open')) return;
+        if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+            nav.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.setAttribute('aria-label', 'Open menu');
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && nav.classList.contains('open')) {
+            nav.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.setAttribute('aria-label', 'Open menu');
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+    initMobileNav();
+
     // Lang toggle
     const langBtn = document.getElementById('lang-toggle');
     langBtn?.addEventListener('click', () => {
