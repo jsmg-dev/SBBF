@@ -12,15 +12,7 @@
 <style>
 :root{--gold:#c99a3a;--deep:#0a4d3a;--maroon:#6b1f1f;--cream:#fffaf0}
 body{background:linear-gradient(180deg,#f8fbf9 0%,#fffdf7 100%)}
-.products-hero{position:relative;overflow:hidden;background:radial-gradient(circle at 80% 20%,rgba(201,154,58,.22),transparent 34%),linear-gradient(135deg,#083d2f,#0f6b52);color:#fff;padding:90px 0 80px}
-.products-hero:after{content:"";position:absolute;inset:auto -10% -120px auto;width:420px;height:260px;background:rgba(201,154,58,.12);border-radius:50%;filter:blur(8px)}
-.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.35fr .65fr;gap:40px;align-items:center}
 .eyebrow{letter-spacing:.16em;text-transform:uppercase;font-size:.78rem;font-weight:800;color:#f2d48a;margin-bottom:14px}
-.products-hero h1{font-family:"Playfair Display",serif;font-size:clamp(2.5rem,5vw,4.8rem);line-height:1.05;margin:0 0 18px}
-.products-hero p{max-width:720px;font-size:1.08rem;color:#eaf6f0}
-.hero-badge{justify-self:end;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.24);padding:24px;border-radius:24px;backdrop-filter:blur(10px);text-align:center}
-.hero-badge strong{display:block;font-size:2.4rem;color:#f2d48a;font-family:"Playfair Display",serif}
-.hero-badge span{display:block;margin-top:5px;color:#fff}
 .sale-strip{background:linear-gradient(90deg,#7a241e,#a84d25,#7a241e);color:#fff;padding:14px 0;text-align:center;font-weight:800;letter-spacing:.04em}
 .sale-strip span{color:#ffe39b}
 .product-section{padding:72px 0}
@@ -55,9 +47,9 @@ body{background:linear-gradient(180deg,#f8fbf9 0%,#fffdf7 100%)}
 .project-overlay h3{font-family:"Playfair Display",serif;font-size:2rem;margin:0}
 .footer-note{background:#0a4d3a;color:#dcefe7;text-align:center;padding:28px 20px}
 .footer-note strong{color:#f2d48a}
-@media(max-width:1000px){.product-grid,.rudhra-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero-inner{grid-template-columns:1fr}.hero-badge{justify-self:start}}
-@media(max-width:700px){.products-hero{padding:64px 0}.product-grid,.rudhra-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.product-img{height:210px}.category-title{margin-top:32px}.category-title h3{font-size:1.1rem}.project-overlay{position:static;background:#0a4d3a}}
-@media(max-width:480px){.product-grid,.rudhra-grid{grid-template-columns:1fr}.product-img{height:245px}.products-hero h1{font-size:2.5rem}}
+@media(max-width:1000px){.product-grid,.rudhra-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:700px){.product-grid,.rudhra-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.product-img{height:210px}.category-title{margin-top:32px}.category-title h3{font-size:1.1rem}.project-overlay{position:static;background:#0a4d3a}}
+@media(max-width:480px){.product-grid,.rudhra-grid{grid-template-columns:1fr}.product-img{height:245px}}
 
 .site-header .nav-links a[aria-current="page"]{
     color:#0f6b52;
@@ -99,23 +91,12 @@ body{background:linear-gradient(180deg,#f8fbf9 0%,#fffdf7 100%)}
         </div>
     </header>
 
-<section class="products-hero">
-<div class="container hero-inner">
-<div>
-<div class="eyebrow">SBB Foundation • Products</div>
-<h1>Products With a Purpose</h1>
-<p>Spiritual, wellness and Gau Seva products offered by SBB Foundation. The product initiative is presented as a way to support the Foundation's Gau Seva Hospital and community work.</p>
-</div>
-<div class="hero-badge"><strong>1–11</strong><span>Mukhi Rudhraksh<br>Special Sale Collection</span></div>
-</div>
-</section>
 <div class="sale-strip">SPECIAL <span>RUDHRAKSH SALE</span> • 1 MUKHI TO 11 MUKHI</div>
 
 <main class="product-section">
 <div class="container">
-<div class="section-head"><div class="eyebrow">Shop / Support</div><h2>Our Product Collection</h2><p>Prices below are editable sample website prices. Replace them with your final MRP and sale prices before publishing.</p></div>
 
-<div class="sale-note"><strong>हर खरीद में सेवा का संकल्प</strong><br>Product pricing can be updated easily in this page. Keep your final approved price list here before going live.</div>
+<div class="sale-note"><strong>हर खरीद में सेवा का संकल्प</strong><br></div>
 
 <div class="category-title"><h3>🔥 Rudhraksh Special Sale — 1 Mukhi to 11 Mukhi</h3></div>
 <div class="product-grid rudhra-grid">
@@ -161,6 +142,10 @@ body{background:linear-gradient(180deg,#f8fbf9 0%,#fffdf7 100%)}
 </main>
 <div class="footer-note">SBB Foundation • <strong>Gau Seva • Community Welfare • Sustainable Service</strong></div>
 
-<script src="ngo.js" defer></script>
+<script>
+const toggle=document.getElementById('nav-toggle'),nav=document.getElementById('nav-links');
+if(toggle){toggle.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')==='true';toggle.setAttribute('aria-expanded',String(!open));nav.classList.toggle('open',!open);});}
+document.querySelectorAll('#nav-links a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');toggle?.setAttribute('aria-expanded','false');}));
+</script>
 </body>
 </html>
