@@ -36,7 +36,43 @@ body{background:linear-gradient(180deg,#f8fbf9 0%,#fffdf7 100%)}
 .mrp{text-decoration:line-through;color:#9ca3af;font-size:.86rem}
 .sale-price{font-size:1.3rem;font-weight:800;color:#7a241e}
 .sale-tag{position:absolute;top:12px;left:12px;background:#b32121;color:#fff;padding:6px 10px;border-radius:999px;font-size:.72rem;font-weight:800;z-index:2;box-shadow:0 4px 12px rgba(0,0,0,.18)}
-.buy-btn{display:block;text-align:center;margin-top:14px;padding:10px 14px;border-radius:10px;background:#0f6b52;color:#fff;font-weight:800}
+.buy-btn{display:block;text-align:center;margin-top:14px;padding:10px 14px;border-radius:10px;background:#0f6b52;color:#fff;font-weight:800;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;width:100%}
+.cart-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.buy-now-btn{background:linear-gradient(135deg,#7a241e,#a84d25)}
+.cart-btn{position:relative;display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:999px;border:2px solid var(--deep,#0a4d3a);background:#fff;color:var(--deep,#0a4d3a);font-weight:700;cursor:pointer;font-family:inherit}
+.cart-count{position:absolute;top:-6px;right:-6px;min-width:20px;height:20px;padding:0 5px;border-radius:999px;background:#b32121;color:#fff;font-size:.72rem;font-weight:800;display:grid;place-items:center}
+.cart-backdrop,.checkout-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;opacity:0;pointer-events:none;transition:opacity .25s}
+.cart-backdrop.open,.checkout-backdrop.open{opacity:1;pointer-events:auto}
+.cart-drawer{position:fixed;top:0;right:0;width:min(400px,92vw);height:100vh;background:#fff;z-index:201;transform:translateX(100%);transition:transform .3s ease;display:flex;flex-direction:column;box-shadow:-8px 0 32px rgba(0,0,0,.15)}
+.cart-drawer.open{transform:translateX(0)}
+.cart-header{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid #eadfca}
+.cart-header h3{margin:0;color:#173b2d;font-family:"Playfair Display",serif}
+.cart-close,.checkout-close{background:none;border:none;font-size:1.4rem;cursor:pointer;color:#64748b;padding:4px 8px}
+.cart-body{flex:1;overflow-y:auto;padding:16px 20px}
+.cart-empty{text-align:center;color:#64748b;padding:40px 16px}
+.cart-item{padding:14px 0;border-bottom:1px solid #f1ebe0;display:grid;gap:8px}
+.cart-item-info strong{display:block;color:#173b2d;font-size:.95rem}
+.cart-item-info span{font-size:.82rem;color:#64748b}
+.cart-item-actions{display:flex;align-items:center;gap:8px}
+.qty-btn{width:32px;height:32px;border-radius:8px;border:1px solid #d4c4a8;background:#fff;cursor:pointer;font-weight:700;font-size:1rem}
+.qty-val{min-width:24px;text-align:center;font-weight:700}
+.cart-remove{margin-left:auto;background:none;border:none;color:#b32121;cursor:pointer;font-size:1rem;padding:4px 8px}
+.cart-item-subtotal{font-weight:800;color:#7a241e;font-size:.95rem}
+.cart-footer{padding:16px 20px;border-top:1px solid #eadfca;background:#faf8f3}
+.cart-total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:1.1rem;font-weight:800;color:#173b2d}
+.checkout-btn{width:100%;padding:14px;border:none;border-radius:12px;background:#0f6b52;color:#fff;font-weight:800;font-size:1rem;cursor:pointer;font-family:inherit}
+.checkout-modal{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(.95);width:min(480px,92vw);max-height:90vh;overflow-y:auto;background:#fff;border-radius:20px;z-index:202;padding:24px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;box-shadow:0 24px 60px rgba(0,0,0,.2)}
+.checkout-modal.open{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+.checkout-modal h3{margin:0 0 16px;font-family:"Playfair Display",serif;color:#173b2d}
+.checkout-summary{background:#f8fbf9;border:1px solid #e2e8f0;border-radius:12px;padding:14px;margin-bottom:18px;font-size:.88rem;color:#475569;line-height:1.6}
+.checkout-total-line{margin-top:10px;padding-top:10px;border-top:1px solid #e2e8f0;color:#173b2d}
+.form-field{margin-bottom:14px}
+.form-field label{display:block;font-size:.85rem;font-weight:600;margin-bottom:5px;color:#173b2d}
+.form-field input,.form-field textarea{width:100%;padding:10px 12px;border:1px solid #d4c4a8;border-radius:10px;font-family:inherit;font-size:.92rem}
+.form-field textarea{min-height:70px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.whatsapp-btn{width:100%;padding:14px;border:none;border-radius:12px;background:#25D366;color:#fff;font-weight:800;font-size:1rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px}
+.whatsapp-btn:hover{background:#1fb855}
 .rudhra-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
 .rudhra .product-body{padding:15px}
 .rudhra .product-img{height:205px}
@@ -49,7 +85,7 @@ body{background:linear-gradient(180deg,#f8fbf9 0%,#fffdf7 100%)}
 .footer-note strong{color:#f2d48a}
 @media(max-width:1000px){.product-grid,.rudhra-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:700px){.product-grid,.rudhra-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.product-img{height:210px}.category-title{margin-top:32px}.category-title h3{font-size:1.1rem}.project-overlay{position:static;background:#0a4d3a}}
-@media(max-width:480px){.product-grid,.rudhra-grid{grid-template-columns:1fr}.product-img{height:245px}}
+@media(max-width:480px){.product-grid,.rudhra-grid{grid-template-columns:1fr}.product-img{height:245px}.cart-actions{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
 
 .site-header .nav-links a[aria-current="page"]{
     color:#0f6b52;
@@ -85,6 +121,9 @@ body{background:linear-gradient(180deg,#f8fbf9 0%,#fffdf7 100%)}
                 <a href="index.html#contact" data-i18n="contactTitle">Contact</a>
             </nav>
             <div class="actions">
+                <button type="button" id="cart-open-btn" class="cart-btn" aria-label="Open cart">
+                    🛒 Cart <span id="cart-count" class="cart-count" hidden>0</span>
+                </button>
                 <button id="lang-toggle" class="pill lang-toggle" aria-label="Toggle language">EN</button>
                 <a class="pill secondary" href="index.html#donate" data-i18n="donateNow">Contribute</a>
             </div>
@@ -117,7 +156,7 @@ body{background:linear-gradient(180deg,#f8fbf9 0%,#fffdf7 100%)}
 <div class="category-title"><h3>Rudhraksh & Spiritual Products</h3></div>
 <div class="product-grid">
 <div class="product-card"><div class="product-img"><img src="images/products/rudhraksh-bracelet.jpg" alt="Rudhraksh bracelet"></div><div class="product-body"><h4>Rudhraksh Bracelet</h4><p>Rudhraksh bracelet collection.</p><div class="price-row"><span class="mrp">₹1,499</span><span class="sale-price">₹999</span></div><a class="buy-btn" href="index.html#contact">Enquire</a></div></div>
-<div class="product-card"><div class="product-img"><img src="images/products/rudhraksh-mala.jpg" alt="Rudhraksh Mala"></div><div class="product-body"><h4>Rudhraksh Mala</h4><p>Traditional Rudhraksh Mala.</p><div class="price-row"><span class="mrp">₹1,999</span><span class="sale-price">₹1,299</span></div><a class="buy-btn" href="index.html#contact">Enquire</a></div></div>
+<div class="product-card"><div class="product-img"><img src="images/products/Rhodonite-Bracelete.jpg" alt="Rhodonite-Bracelete"></div><div class="product-body"><h4>Rhodonite-Bracelete</h4><p>Traditional Rudhraksh Mala.</p><div class="price-row"><span class="mrp">₹1,999</span><span class="sale-price">₹1,299</span></div><a class="buy-btn" href="index.html#contact">Enquire</a></div></div>
 <div class="product-card"><div class="product-img"><img src="images/products/chakra-bracelet.jpg" alt="Seven Chakra Bracelet"></div><div class="product-body"><h4>7 Chakra Bracelet</h4><p>Multi-colour spiritual bracelet.</p><div class="price-row"><span class="mrp">₹1,499</span><span class="sale-price">₹899</span></div><a class="buy-btn" href="index.html#contact">Enquire</a></div></div>
 <div class="product-card"><div class="product-img"><img src="images/products/pyrite.jpg" alt="Natural Pyrite"></div><div class="product-body"><h4>Natural Pyrite</h4><p>Pyrite stone / spiritual collection.</p><div class="price-row"><span class="mrp">₹1,999</span><span class="sale-price">₹1,299</span></div><a class="buy-btn" href="index.html#contact">Enquire</a></div></div>
 <div class="product-card"><div class="product-img"><img src="images/products/kuber-stone.jpg" alt="Kuber Stone"></div><div class="product-body"><h4>Kuber Stone</h4><p>Natural Kuber Stone collection.</p><div class="price-row"><span class="mrp">₹2,499</span><span class="sale-price">₹1,499</span></div><a class="buy-btn" href="index.html#contact">Enquire</a></div></div>
@@ -142,10 +181,66 @@ body{background:linear-gradient(180deg,#f8fbf9 0%,#fffdf7 100%)}
 </main>
 <div class="footer-note">SBB Foundation • <strong>Gau Seva • Community Welfare • Sustainable Service</strong></div>
 
-<script>
-const toggle=document.getElementById('nav-toggle'),nav=document.getElementById('nav-links');
-if(toggle){toggle.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')==='true';toggle.setAttribute('aria-expanded',String(!open));nav.classList.toggle('open',!open);});}
-document.querySelectorAll('#nav-links a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');toggle?.setAttribute('aria-expanded','false');}));
-</script>
+<div id="cart-backdrop" class="cart-backdrop" aria-hidden="true"></div>
+<aside id="cart-drawer" class="cart-drawer" aria-label="Shopping cart">
+    <div class="cart-header">
+        <h3>Your Cart</h3>
+        <button type="button" id="cart-close-btn" class="cart-close" aria-label="Close cart">✕</button>
+    </div>
+    <div class="cart-body">
+        <p id="cart-empty" class="cart-empty">Your cart is empty.<br>Add products to purchase.</p>
+        <div id="cart-items"></div>
+    </div>
+    <div id="cart-footer" class="cart-footer" hidden>
+        <div class="cart-total-row">
+            <span>Total</span>
+            <span id="cart-total">₹0</span>
+        </div>
+        <button type="button" id="checkout-btn" class="checkout-btn">Proceed to Purchase</button>
+    </div>
+</aside>
+
+<div id="checkout-backdrop" class="checkout-backdrop" aria-hidden="true"></div>
+<div id="checkout-modal" class="checkout-modal" role="dialog" aria-labelledby="checkout-title">
+    <button type="button" id="checkout-close-btn" class="checkout-close" aria-label="Close checkout" style="float:right">✕</button>
+    <h3 id="checkout-title">Complete Purchase</h3>
+    <div id="checkout-summary" class="checkout-summary"></div>
+    <form id="checkout-form">
+        <div class="form-field">
+            <label for="cust-name">Full Name *</label>
+            <input type="text" id="cust-name" name="name" required placeholder="Your name">
+        </div>
+        <div class="form-field">
+            <label for="cust-phone">Phone / WhatsApp *</label>
+            <input type="tel" id="cust-phone" name="phone" required placeholder="+91 91660 10400">
+        </div>
+        <div class="form-field">
+            <label for="cust-email">Email</label>
+            <input type="email" id="cust-email" name="email" placeholder="you@email.com">
+        </div>
+        <div class="form-field">
+            <label for="cust-address">Delivery Address *</label>
+            <textarea id="cust-address" name="address" required placeholder="House no, street, area"></textarea>
+        </div>
+        <div class="form-row">
+            <div class="form-field">
+                <label for="cust-city">City *</label>
+                <input type="text" id="cust-city" name="city" required placeholder="City">
+            </div>
+            <div class="form-field">
+                <label for="cust-pincode">Pincode *</label>
+                <input type="text" id="cust-pincode" name="pincode" required placeholder="302001" pattern="[0-9]{6}">
+            </div>
+        </div>
+        <div class="form-field">
+            <label for="cust-notes">Order Notes</label>
+            <textarea id="cust-notes" name="notes" placeholder="Any special instructions"></textarea>
+        </div>
+        <button type="submit" class="whatsapp-btn">📱 Send Order on WhatsApp</button>
+    </form>
+</div>
+
+<script src="ngo.js" defer></script>
+<script src="products-cart.js" defer></script>
 </body>
 </html>
